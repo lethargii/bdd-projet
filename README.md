@@ -2,7 +2,7 @@
 
 Liste des choses à faire :
 
--
+- Faire un site qui marche
 - Ajouter des styles basiques
 - Ajouter polices
 - Voir comment créer un article pour un jeu qui n'existe pas
@@ -69,6 +69,12 @@ Sinon redirige vers l'acceuil.
 
 ## Parties statiques du site
 
+### /jvcom/static/head.php
+
+Head du site
+
+imports des polices
+
 ### /jvcom/static/nav.php
 
 Barre de navigation du site.
@@ -90,3 +96,7 @@ Lien vers l'acceuil sur le logo.
 Footer du site.
 
 Quelques caractéristiques.
+
+### /jvcom/static/html.php
+
+pour changer la classe de la balise html en fonction du compte connecté
