@@ -1,0 +1,46 @@
+:root {
+    /*bg color*/
+    --bg-color: #22252a95;
+    --bg-color2: #22252a;
+    /*role*/
+    --admin-color: #f24444;
+    --modo-color: #42b228;
+    /*txt color*/
+    --text-color: #f2f2f2;
+    --text-primary: #3d87f5;
+    --text-hover-primary: #5596f6;
+    --text-secondary: #f66031;
+    --text-hover-secondary: #f7734a;
+    /*other colors*/
+    --blue-gray-color: #9fafc6;
+
+
+}
+.Old{
+    --color1: rgb(0, 154, 159);
+    --color2: rgb(0, 63, 65);
+    --color-to-change: black;
+    --border-radius: 8px;
+    --colorY: yellow;
+}
+.User1 {
+    --color1: #aa0000;
+    --color2: rgb(0, 0, 77);
+}
+.User2 {
+    --color1: rgb(0, 0, 0);
+    --color2: rgb(47, 47, 47);
+    --border-radius: 5px;
+    --colorY: rgb(166, 0, 255);
+}
+.User3 {
+    --color1: rgb(126, 129, 228);
+    --color2: rgb(168, 106, 8);
+    --border-radius: 10px;
+}
+.User4 {
+    --color1: rgb(0, 255, 0);
+    --color2: rgb(255, 0, 255);
+    --color-to-change: rgb(255, 255, 255);
+    --colorY: rgb(255, 0, 0);
+}
