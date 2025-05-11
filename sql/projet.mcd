@@ -1,0 +1,25 @@
+Categorie: idCategorie [SERIAL], nomCategorie [VARCHAR(100)]
+Support: idSupport [SERIAL], nomSupport [VARCHAR(100)]
+
+CategoriesJeu, 1N Jeu, 0N Categorie
+SupportsJeu, 1N Jeu, 0N Support
+
+ArticleJeu, 11 Article, 01 Jeu
+Jeu: idJeu [SERIAL], nom [VARCHAR(300)], prix [FLOAT], dateSortie [DATE], synopsis [VARCHAR(1000)]
+
+:
+Article: idArticle [SERIAL], titre [VARCHAR(300)], contenu [TEXT], noteArticle [SMALLINT], caractéristiques [VARCHAR(300)], dateCreationArticle [DATE], dateModification [DATE]
+AvisJeu, 0N Jeu, 11 Avis
+Avis: idAvis [SERIAL], titre [VARCHAR(300)], texte [TEXT], noteAvis [TINYINT], dateCreationAvis [DATE]
+
+jaquette, 11 Article, 01 Image
+ImageArticle, 0N Article, 01 Image
+AdministrateurArticle, 11 Article, 0N Utilisateur
+AvisUtilisateur, 0N Utilisateur, 11 Avis
+
+
+:
+Image: idImage [SERIAL], lienImage [VARCHAR(300)]
+ImageUtilisateur, 01 Image, 01 Utilisateur
+Utilisateur: login [VARCHAR(300)], mdp [VARCHAR(100)], nom [VARCHAR(300)], prenom [VARCHAR(300)], mel [VARCHAR(300)], dateNaissance [DATE], modo [BOOLEAN]
+

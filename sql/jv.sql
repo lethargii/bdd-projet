@@ -1,0 +1,100 @@
+CREATE TABLE article (
+  PRIMARY KEY (idArticle),
+  idArticle           SERIAL NOT NULL,
+  titre               VARCHAR(300),
+  contenu             TEXT,
+  noteArticle         TINYINT CHECK (noteArticle <= 10 AND noteArticle >= 0),
+  caracteristiques    VARCHAR(300),
+  dateCreationArticle DATE,
+  dateModification    DATE,
+  idJeu               BIGINT NOT NULL,
+  idImage             BIGINT NOT NULL,
+  login               VARCHAR(300) NOT NULL,
+  UNIQUE (idJeu),
+  UNIQUE (idImage)
+  
+);
+
+CREATE TABLE avis (
+  PRIMARY KEY (idAvis),
+  idAvis           SERIAL NOT NULL,
+  titre            VARCHAR(300),
+  texte            TEXT,
+  noteAvis         TINYINT CHECK (noteAvis <= 10 AND noteAvis >= 0),
+  dateCreationAvis DATE,
+  idJeu            BIGINT NOT NULL,
+  login            VARCHAR(300) NOT NULL
+  
+);
+
+CREATE TABLE categorie (
+  PRIMARY KEY (idCategorie),
+  idCategorie  SERIAL NOT NULL,
+  nomCategorie VARCHAR(100)
+);
+
+CREATE TABLE categoriesJeu (
+  PRIMARY KEY (idJeu, idCategorie),
+  idJeu       BIGINT NOT NULL,
+  idCategorie BIGINT NOT NULL
+);
+
+CREATE TABLE image (
+  PRIMARY KEY (idImage),
+  idImage   SERIAL NOT NULL,
+  lienImage VARCHAR(300),
+  idArticle BIGINT
+);
+
+CREATE TABLE jeu (
+  PRIMARY KEY (idJeu),
+  idJeu      SERIAL NOT NULL,
+  nom        VARCHAR(300),
+  prix       FLOAT,
+  dateSortie DATE,
+  synopsis   VARCHAR(1000)
+);
+
+CREATE TABLE support (
+  PRIMARY KEY (idSupport),
+  idSupport  SERIAL NOT NULL,
+  nomSupport VARCHAR(100)
+);
+
+CREATE TABLE supportsJeu (
+  PRIMARY KEY (idJeu, idSupport),
+  idJeu     SERIAL NOT NULL,
+  idSupport BIGINT NOT NULL
+);
+
+CREATE TABLE utilisateur (
+  PRIMARY KEY (login),
+  login         VARCHAR(300) NOT NULL,
+  mdp           VARCHAR(100),
+  nom           VARCHAR(300),
+  prenom        VARCHAR(300),
+  mel           VARCHAR(300),
+  dateNaissance DATE CHECK (dateNaissance <= DATEADD(year, CURRENT_DATE(), -15)),
+  modo          BOOLEAN,
+  idImage       BIGINT NULL,
+  UNIQUE (idImage)
+  
+);
+
+ALTER TABLE article ADD FOREIGN KEY (login) REFERENCES utilisateur (login);
+ALTER TABLE article ADD FOREIGN KEY (idImage) REFERENCES image (idImage);
+ALTER TABLE article ADD FOREIGN KEY (idJeu) REFERENCES jeu (idJeu);
+
+ALTER TABLE avis ADD FOREIGN KEY (login) REFERENCES utilisateur (login);
+ALTER TABLE avis ADD FOREIGN KEY (idJeu) REFERENCES jeu (idJeu);
+
+ALTER TABLE categoriesJeu ADD FOREIGN KEY (idCategorie) REFERENCES categorie (idCategorie);
+ALTER TABLE categoriesJeu ADD FOREIGN KEY (idJeu) REFERENCES jeu (idJeu);
+
+ALTER TABLE image ADD FOREIGN KEY (idArticle) REFERENCES article (idArticle);
+
+ALTER TABLE supportsJeu ADD FOREIGN KEY (idSupport) REFERENCES support (idSupport);
+ALTER TABLE supportsJeu ADD FOREIGN KEY (idJeu) REFERENCES jeu (idJeu);
+
+ALTER TABLE utilisateur ADD FOREIGN KEY (idImage) REFERENCES image (idImage);
+
