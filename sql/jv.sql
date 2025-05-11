@@ -1,12 +1,12 @@
 CREATE TABLE article (
   PRIMARY KEY (idArticle),
   idArticle           SERIAL NOT NULL,
-  titre               VARCHAR(300),
-  contenu             TEXT,
-  noteArticle         TINYINT CHECK (noteArticle <= 10 AND noteArticle >= 0),
-  caracteristiques    VARCHAR(300),
-  dateCreationArticle DATE,
-  dateModification    DATE,
+  titre               VARCHAR(300) NOT NULL,
+  contenu             TEXT NOT NULL,
+  noteArticle         TINYINT CHECK (noteArticle <= 10 AND noteArticle >= 0) NOT NULL,
+  caracteristiques    VARCHAR(300) NOT NULL,
+  dateCreationArticle DATE NOT NULL,
+  dateModification    DATE NOT NULL,
   idJeu               BIGINT NOT NULL,
   idImage             BIGINT NOT NULL,
   login               VARCHAR(300) NOT NULL,
@@ -18,10 +18,10 @@ CREATE TABLE article (
 CREATE TABLE avis (
   PRIMARY KEY (idAvis),
   idAvis           SERIAL NOT NULL,
-  titre            VARCHAR(300),
-  texte            TEXT,
-  noteAvis         TINYINT CHECK (noteAvis <= 10 AND noteAvis >= 0),
-  dateCreationAvis DATE,
+  titre            VARCHAR(300) NOT NULL,
+  texte            TEXT NOT NULL,
+  noteAvis         TINYINT CHECK (noteAvis <= 10 AND noteAvis >= 0) NOT NULL,
+  dateCreationAvis DATE NOT NULL,
   idJeu            BIGINT NOT NULL,
   login            VARCHAR(300) NOT NULL
   
@@ -30,7 +30,7 @@ CREATE TABLE avis (
 CREATE TABLE categorie (
   PRIMARY KEY (idCategorie),
   idCategorie  SERIAL NOT NULL,
-  nomCategorie VARCHAR(100)
+  nomCategorie VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE categoriesJeu (
@@ -42,23 +42,23 @@ CREATE TABLE categoriesJeu (
 CREATE TABLE image (
   PRIMARY KEY (idImage),
   idImage   SERIAL NOT NULL,
-  lienImage VARCHAR(300),
+  lienImage VARCHAR(300) NOT NULL,
   idArticle BIGINT
 );
 
 CREATE TABLE jeu (
   PRIMARY KEY (idJeu),
   idJeu      SERIAL NOT NULL,
-  nom        VARCHAR(300),
-  prix       FLOAT,
-  dateSortie DATE,
-  synopsis   VARCHAR(1000)
+  nom        VARCHAR(300) NOT NULL,
+  prix       FLOAT NOT NULL,
+  dateSortie DATE NOT NULL,
+  synopsis   VARCHAR(1000) NOT NULL
 );
 
 CREATE TABLE support (
   PRIMARY KEY (idSupport),
   idSupport  SERIAL NOT NULL,
-  nomSupport VARCHAR(100)
+  nomSupport VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE supportsJeu (
@@ -70,12 +70,12 @@ CREATE TABLE supportsJeu (
 CREATE TABLE utilisateur (
   PRIMARY KEY (login),
   login         VARCHAR(300) NOT NULL,
-  mdp           VARCHAR(100),
-  nom           VARCHAR(300),
-  prenom        VARCHAR(300),
-  mel           VARCHAR(300),
-  dateNaissance DATE CHECK (dateNaissance <= DATEADD(year, CURRENT_DATE(), -15)),
-  modo          BOOLEAN,
+  mdp           VARCHAR(100) NOT NULL,
+  nom           VARCHAR(300) NOT NULL,
+  prenom        VARCHAR(300) NOT NULL,
+  mel           VARCHAR(300) NOT NULL,
+  dateNaissance DATE CHECK (dateNaissance <= DATEADD(year, CURRENT_DATE(), -15)) NOT NULL,
+  modo          BOOLEAN NOT NULL,
   idImage       BIGINT NULL,
   UNIQUE (idImage)
   

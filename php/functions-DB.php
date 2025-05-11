@@ -1,5 +1,5 @@
 <?php
-require_once("./includes/config-bdd.php");
+require_once(__DIR__."/../includes/config-bdd.php");
 
 #connexion à la base de données en MySQLi (base de données SQL)
 function connectionDB()
