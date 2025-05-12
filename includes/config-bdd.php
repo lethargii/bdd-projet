@@ -3,5 +3,5 @@
 define('SERVEUR', 'localhost');         //hote
 define('USER', 'root');                 //login, par exemple "root" ou ""
 define('PWD', '2435');                  //mot de passe, par exemple "root" ou ""
-define('DB_NAME', 'pokedex');  //nom de la base de données
+define('DB_NAME', 'JV');  //nom de la base de données
 ?>

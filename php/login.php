@@ -6,22 +6,21 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 //Import du site
-require_once("../includes/constantes.php");      //constantes du site
-require_once("../php/functions-DB.php");
-require_once("../php/functions_query.php");
-require_once("../php/functions_structure.php");
+require_once(__DIR__."/../includes/constantes.php");
+require_once(__DIR__."/../php/functions-DB.php");
+require_once(__DIR__."/../php/functions_query.php");
+require_once(__DIR__."/../php/functions_structure.php");
 $mysqli = connectionDB();
 $form = $_POST;
 if(!loginCorrect($mysqli, $form)){
   closeDB($mysqli);
-  header('Location: ../connection.php');
+  header('Location: ../connection?error=1');
 }
 else{
-  $infoDres = infoDresseur($mysqli, $form);
-  $_SESSION['login_dresseur'] = $infoDres[0]['nom_dresseur'];
-  $_SESSION['id_dresseur'] = $infoDres[0]['id_dresseur'];
-  $_SESSION['connect_dresseur'] = true;
+  $infoDres = infoUtilisateur($mysqli, $form);
+  $_SESSION['login'] = $infoDres[0]['login'];
+  $_SESSION['logged'] = true;
 }
 closeDB($mysqli);
-header('Location: ../index.php');
+header('Location: ../');
 ?>
