@@ -12,15 +12,11 @@ require_once("../php/functions_query.php");
 require_once("../php/functions_structure.php");
 $mysqli = connectionDB();
 $form = $_POST;
-if(!loginCorrect($mysqli, $form)){
+if(notExistUtilisateur($mysqli, $form)){
   closeDB($mysqli);
-  header('Location: ../connection.php');
+  header('Location: ../inscription');
 }
 else{
-  $infoDres = infoDresseur($mysqli, $form);
-  $_SESSION['login_dresseur'] = $infoDres[0]['nom_dresseur'];
-  $_SESSION['id_dresseur'] = $infoDres[0]['id_dresseur'];
-  $_SESSION['connect_dresseur'] = true;
 }
 closeDB($mysqli);
 header('Location: ../');
