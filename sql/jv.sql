@@ -1,14 +1,14 @@
 CREATE TABLE article (
   PRIMARY KEY (idArticle),
-  idArticle           SERIAL NOT NULL,
+  idArticle           INT AUTO_INCREMENT NOT NULL,
   titre               VARCHAR(300) NOT NULL,
   contenu             TEXT NOT NULL,
   noteArticle         TINYINT NOT NULL CHECK (noteArticle <= 10 AND noteArticle >= 0),
   caracteristiques    VARCHAR(300) NOT NULL,
   dateCreationArticle DATE NOT NULL,
   dateModification    DATE NOT NULL,
-  idJeu               BIGINT NOT NULL,
-  idImage             BIGINT NOT NULL,
+  idJeu               INT NOT NULL,
+  idImage             INT NOT NULL,
   login               VARCHAR(300) NOT NULL,
   UNIQUE (idJeu),
   UNIQUE (idImage)
@@ -17,38 +17,38 @@ CREATE TABLE article (
 
 CREATE TABLE avis (
   PRIMARY KEY (idAvis),
-  idAvis           SERIAL NOT NULL,
+  idAvis           INT AUTO_INCREMENT NOT NULL,
   titre            VARCHAR(300) NOT NULL,
   texte            TEXT NOT NULL,
   noteAvis         TINYINT NOT NULL CHECK (noteAvis <= 10 AND noteAvis >= 0),
   dateCreationAvis DATE NOT NULL,
-  idJeu            BIGINT NOT NULL,
+  idJeu            INT NOT NULL,
   login            VARCHAR(300) NOT NULL
   
 );
 
 CREATE TABLE categorie (
   PRIMARY KEY (idCategorie),
-  idCategorie  SERIAL NOT NULL,
+  idCategorie  INT AUTO_INCREMENT NOT NULL,
   nomCategorie VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE categoriesJeu (
   PRIMARY KEY (idJeu, idCategorie),
-  idJeu       BIGINT NOT NULL,
-  idCategorie BIGINT NOT NULL
+  idJeu       INT NOT NULL,
+  idCategorie INT NOT NULL
 );
 
 CREATE TABLE image (
   PRIMARY KEY (idImage),
-  idImage   SERIAL NOT NULL,
+  idImage   INT AUTO_INCREMENT NOT NULL,
   lienImage VARCHAR(300) NOT NULL,
-  idArticle BIGINT
+  idArticle INT
 );
 
 CREATE TABLE jeu (
   PRIMARY KEY (idJeu),
-  idJeu      SERIAL NOT NULL,
+  idJeu      INT AUTO_INCREMENT NOT NULL,
   nom        VARCHAR(300) NOT NULL,
   prix       FLOAT NOT NULL,
   dateSortie DATE NOT NULL,
@@ -57,14 +57,14 @@ CREATE TABLE jeu (
 
 CREATE TABLE support (
   PRIMARY KEY (idSupport),
-  idSupport  SERIAL NOT NULL,
+  idSupport  INT AUTO_INCREMENT NOT NULL,
   nomSupport VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE supportsJeu (
   PRIMARY KEY (idJeu, idSupport),
-  idJeu     SERIAL NOT NULL,
-  idSupport BIGINT NOT NULL
+  idJeu     INT NOT NULL,
+  idSupport INT NOT NULL
 );
 
 CREATE TABLE utilisateur (
@@ -74,9 +74,9 @@ CREATE TABLE utilisateur (
   nom           VARCHAR(300) NOT NULL,
   prenom        VARCHAR(300) NOT NULL,
   mel           VARCHAR(300) NOT NULL,
-  dateNaissance DATE NOT NULL CHECK (dateNaissance <= DATEADD(year, CURRENT_DATE(), -15)),
+  dateNaissance DATE NOT NULL,
   modo          BOOLEAN NOT NULL,
-  idImage       BIGINT NULL,
+  idImage       INT NULL,
   UNIQUE (idImage)
   
 );

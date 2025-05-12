@@ -26,7 +26,7 @@ $mysqli = connectionDB();
     <?php include("../static/header.php"); ?>
     <?php include("../static/nav.php"); ?>
     <main>
-      <form action="../php/signin.php" method="POST">
+      <form action="../php/signin.php" method="POST" enctype="multipart/form-data">
         <fieldset>
           <legend>Entrez vos informations</legend>
           <input type="text" id="login" name="login" placeholder="Nom d'utilisateur" required>
@@ -37,6 +37,7 @@ $mysqli = connectionDB();
           <input type="date" id="dateNaissance" name="dateNaissance" placeholder="Date de naissance" required>
           <input type="checkbox" id="modo" name="modo" />
           <label for="modo">Modérateur</label>
+          <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
           <input type="submit" value="S'inscrire" id="signin"/>
         </fieldset>
       </form>

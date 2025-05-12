@@ -11,23 +11,14 @@ function loginCorrect($mysqli, $utilisateur){
   return !empty($dresExiste);
 }
 
-function notExistUtilisateur($mysqli, $utilisateur){
+function existUtilisateur($mysqli, $utilisateur){
   $login = $utilisateur['login'];
-  return empty(readDB($mysqli, "SELECT * FROM utilisateur WHERE login = '$login'"));
+  return !empty(readDB($mysqli, "SELECT * FROM utilisateur WHERE login = '$login'"));
 }
 
-function pokeNotExist($mysqli, $nom){
-  $pokemon = readDB($mysqli, "SELECT * FROM pokemon WHERE nom='$nom'");
-  return empty($pokemon);
+function profilQuery($mysqli, $login){
+  return readDB($mysqli, "SELECT login, nom, prenom, mel, dateNaissance, modo, lienImage FROM utilisateur
+    INNER JOIN image ON utilisateur.idImage = image.idImage
+    WHERE login = '$login'");
 }
-
-function nbVueAttrapePokemon($mysqli, $id_pokemon, $id_dresseur){
-  return readDB($mysqli, "SELECT nbVue, nbAttrape FROM pokedex WHERE id_pokemon = '$id_pokemon' AND id_dresseur = '$id_dresseur'");
-}
-
-function inPokedex($mysqli, $id_pokemon, $id_dresseur){
-  $pokedex = nbVueAttrapePokemon($mysqli, $id_pokemon, $id_dresseur);
-  return !empty($pokedex);
-}
-
 ?>
