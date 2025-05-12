@@ -10,12 +10,12 @@ button{
 }
 button:hover{
     font-size: 32px;
-    background-color: yellow;
+    background-color: var(--colorY);
     margin: 0%;
     transition: 0.4s ease;
 }
 label{
     font-family: "Luckiest Guy", Helvetica, sans-serif;
-    color: yellow;
+    color: var(--colorY);
     font-size: 24px;
 }

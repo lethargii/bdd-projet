@@ -11,9 +11,12 @@ require_once("./php/functions-DB.php");
 require_once("./php/functions_query.php");
 require_once("./php/functions_structure.php");
 $mysqli = connectionDB();
+$bdd=getBDD($mysqli);
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<?php
+include("static/html.php");
+?>
   <head>
     <meta charset="utf-8">
     <title>Accueil - jeu videal</title>
@@ -25,8 +28,10 @@ $mysqli = connectionDB();
   <body>
     <?php include("static/header.php"); ?>
     <?php include("static/nav.php"); ?>
-    <main>
-      <h1>L'accueil de notre super site à moi et moi !</h1>
+    <main class="lilMargin">
+      <?php
+        displayJV($bdd);
+      ?>
     </main>
     <?php include("static/footer.php"); ?>
   </body> 

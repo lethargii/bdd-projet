@@ -3,7 +3,7 @@
 session_start();
 echo "<html lang='fr' ";
 if (isset($_SESSION['is_connected'])) {
-    if ($_SESSION['id'] == "1") {
+    if ($_SESSION['id'] == 1) {
         echo "class='User1'";
     }
     elseif ($_SESSION['id'] == 2) {
