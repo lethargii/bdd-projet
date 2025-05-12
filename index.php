@@ -16,7 +16,7 @@ $mysqli = connectionDB();
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <title>Accueil - Poképédia</title>
+    <title>Accueil - jeu videal</title>
     <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <meta name="keywords" content="BDD-IHM, TD, CUPGE2">
@@ -26,7 +26,7 @@ $mysqli = connectionDB();
     <?php include("static/header.php"); ?>
     <?php include("static/nav.php"); ?>
     <main>
-      <h1>L'accueil de notre super site à moi et Marcounet !</h1>
+      <h1>L'accueil de notre super site à moi et moi !</h1>
     </main>
     <?php include("static/footer.php"); ?>
   </body> 
