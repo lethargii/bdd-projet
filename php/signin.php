@@ -14,10 +14,16 @@ $mysqli = connectionDB();
 $form = $_POST;
 if(notExistUtilisateur($mysqli, $form)){
   closeDB($mysqli);
-  header('Location: ../inscription');
+  header('Location: ../inscription?error=1');
 }
-else{
-}
+$login = $form['login'];
+$mdp = $form['mdp'];
+$nom = $form['nom'];
+$prenom = $form['prenom'];
+$mel = $form['mel'];
+$dateNaissance = $form['dateNaissance'];
+$modo = $form['modo'];
+writeDB($mysqli, "INSERT INTO utilisateur VALUES ('$login', '$mdp', '$nom', '$prenom', '$mel', '$dateNaissance', '$modo')");
 closeDB($mysqli);
 header('Location: ../');
 ?>
