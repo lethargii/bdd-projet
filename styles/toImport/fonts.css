@@ -1,0 +1,20 @@
+/* import des polices */
+.short-stack-regular, .luckiest-guy-regular {
+    font-weight: 400;
+    font-style: normal;
+}
+.short-stack-regular {
+    font-family: "Short Stack", cursive;
+}
+.luckiest-guy-regular {
+    font-family: "Luckiest Guy", cursive;
+}
+/*@font-face {
+    font-family: 'Pokemon';
+    src: url('../fonts/Pokemon_Solid.ttf') format('truetype');
+}*/
+.bungee-tint-regular {
+    font-family: "Bungee Tint", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
