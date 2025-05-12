@@ -1,0 +1,21 @@
+@import 'import.css';
+
+.myBloc, .myReverseBloc, .myImgBloc {
+    display: inline-block;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.myBloc {
+    background-color: var(--color1);
+}
+
+.myReverseBloc {
+    background-color: var(--color2);
+}
+
+.myImgBloc {
+    background-color: var(--color1);
+}
+

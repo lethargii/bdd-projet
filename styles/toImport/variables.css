@@ -2,6 +2,7 @@
     /*bg color*/
     --bg-color: #22252a95;
     --bg-color2: #22252a;
+    --bg-color3: #000000;
     /*role*/
     --admin-color: #f24444;
     --modo-color: #42b228;
@@ -11,8 +12,8 @@
     --text-hover-primary: #5596f6;
     --text-secondary: #f66031;
     --text-hover-secondary: #f7734a;
-    /*other colors*/
-    --blue-gray-color: #9fafc6;
+    /*other stuff*/
+    --border-radius: 8px;
 }
 .Old{
     --color1: rgb(0, 154, 159);

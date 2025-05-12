@@ -1,0 +1,102 @@
+@import 'import.css';
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none; /* ca enlève la scrollbar */
+}
+  
+body {
+    background-color: var(--);
+    background-image: linear-gradient(to bottom, rgba(24, 24, 24, 0), rgba(0, 0, 0, 0.5));
+    
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-shadow: 1px 1px 2px black, -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black;
+    min-height: 100vh;
+    font-family: cursive, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content : space-between;
+    align-items : center;
+    background-color: var(--color-to-change);
+    font-family: 'Pokemon', sans-serif;
+    color: yellow;
+}
+
+header h1 {
+    font-family: 'Pokemon', sans-serif;
+    text-shadow: 2px 2px 2px rgb(255, 0, 0);
+    margin : 0;
+}
+
+main {
+    padding-top: 10px;
+    padding-bottom: 75px;
+    flex: 1;
+}
+
+.center {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+footer {
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--color1);
+    flex-direction: row;
+    justify-content : space-between;
+    align-items : center;
+    padding-left: 8%;
+    padding-right: 8%;
+    z-index: 10;
+}
+
+.aAligner {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#petit {
+    margin: 0;
+    font-size: 10px;
+    font-weight: lighter;
+}
+
+.repartir {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2%;
+}
+
+.repartir > * {
+    flex: 1 1 20%;
+    max-width: 30%; /* Définit une largeur maximale */
+    text-align: center; /* Centre le texte à l'intérieur */
+}
+
+.lilMargin {
+    margin: 5em;
+}
+
+.lilTopMargin {
+    margin-top: 6em;
+}
+
+h1 {
+    font-family: 'Pokemon', sans-serif;
+    text-shadow: 2px 2px 2px rgb(255, 0, 0);
+    color: var(--colorY);
+}
+
+h2 {
+    font-size: 36px;
+}

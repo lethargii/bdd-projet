@@ -1,0 +1,21 @@
+@import 'import.css';
+
+button{
+    font-family: "Bungee Tint",sans-serif;
+    background-color: var(--color1);
+    font-size: 24px;
+    border-radius: var(--border-radius);
+    width: 100%;
+    text-shadow: 2px 5px 7px rgb(255, 0, 0);
+}
+button:hover{
+    font-size: 32px;
+    background-color: yellow;
+    margin: 0%;
+    transition: 0.4s ease;
+}
+label{
+    font-family: "Luckiest Guy", Helvetica, sans-serif;
+    color: yellow;
+    font-size: 24px;
+}
