@@ -3,7 +3,7 @@ CREATE TABLE article (
   idArticle           SERIAL NOT NULL,
   titre               VARCHAR(300) NOT NULL,
   contenu             TEXT NOT NULL,
-  noteArticle         TINYINT CHECK (noteArticle <= 10 AND noteArticle >= 0) NOT NULL,
+  noteArticle         TINYINT NOT NULL CHECK (noteArticle <= 10 AND noteArticle >= 0),
   caracteristiques    VARCHAR(300) NOT NULL,
   dateCreationArticle DATE NOT NULL,
   dateModification    DATE NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE avis (
   idAvis           SERIAL NOT NULL,
   titre            VARCHAR(300) NOT NULL,
   texte            TEXT NOT NULL,
-  noteAvis         TINYINT CHECK (noteAvis <= 10 AND noteAvis >= 0) NOT NULL,
+  noteAvis         TINYINT NOT NULL CHECK (noteAvis <= 10 AND noteAvis >= 0),
   dateCreationAvis DATE NOT NULL,
   idJeu            BIGINT NOT NULL,
   login            VARCHAR(300) NOT NULL
@@ -74,7 +74,7 @@ CREATE TABLE utilisateur (
   nom           VARCHAR(300) NOT NULL,
   prenom        VARCHAR(300) NOT NULL,
   mel           VARCHAR(300) NOT NULL,
-  dateNaissance DATE CHECK (dateNaissance <= DATEADD(year, CURRENT_DATE(), -15)) NOT NULL,
+  dateNaissance DATE NOT NULL CHECK (dateNaissance <= DATEADD(year, CURRENT_DATE(), -15)),
   modo          BOOLEAN NOT NULL,
   idImage       BIGINT NULL,
   UNIQUE (idImage)
