@@ -29,13 +29,16 @@ $mysqli = connectionDB();
     <?php include("../static/header.php"); ?>
     <?php include("../static/nav.php"); ?>
     <main>
-      <?php
-        $profil = profilQuery($mysqli, $_SESSION['login']);
-        print_r($profil); 
-      ?>
-      <a href="../creaJeu">Créer un jeu</a>
-      <a href="../creaArticle">Créer un article pour un jeu</a>
-      <a href="../modprofil">Modifier le profil</a>
+      <form action="../php/modarticle.php" method="POST" enctype="multipart/form-data">
+        <fieldset>
+          <?php
+            $article = infoArticle($mysqli, $_GET['idJeu']);
+            modarticle($article);
+          ?>
+          <input type="hidden" name="idJeu" value="<?php echo $_GET['idJeu']; ?>" />
+          <input type="submit" value="Enregistrer" id="modarticle"/>
+        </fieldset>
+      </form>
     </main>
     <?php include("../static/footer.php"); ?>
   </body> 

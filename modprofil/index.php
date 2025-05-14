@@ -29,6 +29,15 @@ $mysqli = connectionDB();
     <?php include("../static/header.php"); ?>
     <?php include("../static/nav.php"); ?>
     <main>
+      <form action="../php/modprofil.php" method="POST" enctype="multipart/form-data">
+        <fieldset>
+          <?php
+            $utilisateur = infoUtilisateur($mysqli, $_SESSION['login']);
+            modprofil($utilisateur);
+          ?>
+          <input type="submit" value="Enregistrer" id="modprofil"/>
+        </fieldset>
+      </form>
     </main>
     <?php include("../static/footer.php"); ?>
   </body> 

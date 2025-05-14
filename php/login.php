@@ -17,8 +17,7 @@ if(!loginCorrect($mysqli, $form)){
   header('Location: ../connection?error=1');
 }
 else{
-  $infoDres = infoUtilisateur($mysqli, $form);
-  $_SESSION['login'] = $infoDres[0]['login'];
+  $_SESSION['login'] = $form['login'];
   $_SESSION['logged'] = true;
 }
 closeDB($mysqli);

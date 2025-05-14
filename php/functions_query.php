@@ -1,14 +1,26 @@
 <?php
 require_once(__DIR__."/functions-DB.php");
-function infoUtilisateur($mysqli, $utilisateur){
-  $login = $utilisateur['login'];
-  $mdp = $utilisateur['mdp'];
-  return readDB($mysqli, "SELECT * FROM utilisateur WHERE login = '$login' AND mdp = '$mdp'");
+function infoUtilisateur($mysqli, $login){
+  return readDB($mysqli, "SELECT * FROM utilisateur WHERE login = '$login'");
+}
+
+function infoAvis($mysqli, $idAvis){
+  return readDB($mysqli, "SELECT * FROM avis WHERE idAvis = '$idAvis'");
+}
+
+function infoArticle($mysqli, $idJeu){
+  return readDB($mysqli, "SELECT article.*, jacquetteJeu.lienImage, imageArticle.lienImage FROM jeu
+    INNER JOIN article ON jeu.idJeu = article.idJeu
+    INNER JOIN image AS jacquetteJeu ON jeu.idImage = jacquetteJeu.idImage
+    LEFT JOIN image AS imageArticle ON article.idArticle = imageArticle.idArticle
+    WHERE jeu.idJeu = '$idJeu'");
 }
 
 function loginCorrect($mysqli, $utilisateur){
-  $dresExiste = infoUtilisateur($mysqli, $utilisateur);
-  return !empty($dresExiste);
+  $login = $utilisateur['login'];
+  $mdp = $utilisateur['mdp'];
+  $inf = readDB($mysqli, "SELECT * FROM utilisateur WHERE login = '$login' AND mdp = '$mdp'");
+  return !empty($inf);
 }
 
 function existUtilisateur($mysqli, $utilisateur){

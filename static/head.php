@@ -1,5 +1,5 @@
 <head>
-    <?php require_once("./includes/constantes.php");
+    <?php require_once(__DIR__."/../includes/constantes.php");
     echo "<title>".$titreSite."</title>";
     ?>
     <meta charset="utf-8">
