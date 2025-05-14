@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['logged']) && $_SESSION['logged'] == true){
+if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false){
   header("Location: ../");
 }
 //affichage des erreurs côté PHP et côté MYSQLI
@@ -29,15 +29,23 @@ $mysqli = connectionDB();
     <?php include("../static/header.php"); ?>
     <?php include("../static/nav.php"); ?>
     <main>
-      <form action="../php/login.php" method="POST">
+      <form action="../php/addarticle.php" method="POST" enctype="multipart/form-data">
         <fieldset>
           <legend>Entrez vos informations</legend>
-          <input type="text" id="login" name="login" placeholder="Nom d'utilisateur" required>
-          <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required>
-          <input type="submit" value="Se connecter" id="signin"/>
+          <select name="idJeu" id="idJeu">
+            <?php
+              $jeux = listJeu($mysqli);
+              listJeuOption($jeux);
+            ?>
+          </select>
+          <input type="text" id="titre" name="titre" placeholder="Titre de l'article" required>
+          <input type="text" id="contenu" name="contenu" placeholder="Contenu de l'article" required>
+          <input type="number" id="noteArticle" name="noteArticle" placeholder="Note du jeu" required>
+          <input type="text" id="caracteristiques" name="caracteristiques" placeholder="Caractéristiques du jeu" required>
+          <input type="file" id="imagesArticle" name="imagesArticles" accept="image/png, image/jpeg" multiple>
+          <input type="submit" value="Créer l'article" id="creaarticle"/>
         </fieldset>
       </form>
-      <a href="../inscription/">S'inscrire</a>
     </main>
     <?php include("../static/footer.php"); ?>
   </body> 

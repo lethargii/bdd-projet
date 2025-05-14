@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['logged']) || $_SESSION['logged'] = false){
+if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false){
   header("Location: ../");
 }
 //affichage des erreurs côté PHP et côté MYSQLI

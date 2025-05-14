@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['logged']) && $_SESSION['logged'] == true){
+if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false){
   header("Location: ../");
 }
 //affichage des erreurs côté PHP et côté MYSQLI
@@ -29,15 +29,18 @@ $mysqli = connectionDB();
     <?php include("../static/header.php"); ?>
     <?php include("../static/nav.php"); ?>
     <main>
-      <form action="../php/login.php" method="POST">
+      <form action="../php/addgame.php" method="POST" enctype="multipart/form-data">
         <fieldset>
           <legend>Entrez vos informations</legend>
-          <input type="text" id="login" name="login" placeholder="Nom d'utilisateur" required>
-          <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required>
-          <input type="submit" value="Se connecter" id="signin"/>
+          <input type="text" id="nom" name="nom" placeholder="Nom du jeu" required>
+          <input type="number" id="prix" name="prix" placeholder="Prix à la sortie" required>
+          <input type="date" id="dateSortie" name="dateSortie" placeholder="Date de sortie" required>
+          <input type="text" id="synopsis" name="synopsis" placeholder="Synopsis" required>
+          <input type="file" id="imageJeu" name="imageJeu" accept="image/png, image/jpeg" />
+          <input type="submit" value="Créer le jeu" id="creajeu"/>
         </fieldset>
       </form>
-      <a href="../inscription/">S'inscrire</a>
+      <a href="../connection/">Se connecter</a>
     </main>
     <?php include("../static/footer.php"); ?>
   </body> 

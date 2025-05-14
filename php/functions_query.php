@@ -21,4 +21,8 @@ function profilQuery($mysqli, $login){
     INNER JOIN image ON utilisateur.idImage = image.idImage
     WHERE login = '$login'");
 }
+
+function listJeu($mysqli){
+  return readDB($mysqli, "SELECT idJeu, nom FROM jeu");
+}
 ?>
