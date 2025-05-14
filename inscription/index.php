@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(isset($_SESSION['logged']) && $_SESSION['logged'] == true){
+  header("Location: ../");
+}
 //affichage des erreurs côté PHP et côté MYSQLI
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

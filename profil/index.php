@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['logged']) || $_SESSION['logged'] = false){
+if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false){
   header("Location: ../");
 }
 //affichage des erreurs côté PHP et côté MYSQLI
@@ -33,6 +33,8 @@ $mysqli = connectionDB();
         $profil = profilQuery($mysqli, $_SESSION['login']);
         print_r($profil); 
       ?>
+      <a href="../creaJeu">Créer un jeu</a>
+      <a href="../creaArticle">Créer un article pour un jeu</a>
     </main>
     <?php include("../static/footer.php"); ?>
   </body> 

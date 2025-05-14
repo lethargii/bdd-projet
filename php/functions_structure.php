@@ -1,5 +1,4 @@
 <?php
-<?php
 require_once(__DIR__ . "/functions_query.php");
 function displayJV($bdd){
     echo "<div class='pokeMenu'>";
@@ -43,6 +42,13 @@ function displayJV($bdd){
     echo "</div>";
 }
 
+function listJeuOption($jeux){
+  foreach($jeux as $jeu){
+    $idJeu = $jeu['idJeu'];
+    $nom = $jeu['nom'];
+    echo "<option value='$idJeu'>$idJeu - $nom</option>";
+  }
+}
 
 ?>
 ?>

@@ -59,10 +59,10 @@ function writeDB($mysqli, $sql_input)
 
 function getBDD($mysqli){
 	//Cette fonction est évidemment a changer
-	return readDB($mysqli, "SELECT pokemon.id_pokemon, pokemon.nom, pokemon.numero, image.chemin 
-    FROM pokemon 
-    INNER JOIN image USING(id_pokemon) 
-    WHERE image.chemin LIKE '%/pokemon_sugimori/%' 
-    ORDER BY pokemon.numero ASC");
+	/* return readDB($mysqli, "SELECT pokemon.id_pokemon, pokemon.nom, pokemon.numero, image.chemin  */
+	/*    FROM pokemon  */
+	/*    INNER JOIN image USING(id_pokemon)  */
+	/*    WHERE image.chemin LIKE '%/pokemon_sugimori/%'  */
+	/*    ORDER BY pokemon.numero ASC"); */
 }
 ?>

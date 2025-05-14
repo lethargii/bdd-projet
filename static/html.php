@@ -1,6 +1,6 @@
 <?php
 // pas encore utile
-session_start();
+/* session_start(); */
 echo "<html lang='fr' ";
 if (isset($_SESSION['is_connected'])) {
     if ($_SESSION['id'] == 1) {
