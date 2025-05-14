@@ -29,24 +29,22 @@ $mysqli = connectionDB();
     <?php include("../static/header.php"); ?>
     <?php include("../static/nav.php"); ?>
     <main>
-      <form action="../php/addgame.php" method="POST" enctype="multipart/form-data">
+      <form action="../php/addavis.php" method="POST">
         <fieldset>
           <legend>Entrez vos informations</legend>
-          <input type="text" id="nom" name="nom" placeholder="Nom du jeu" required>
-          <input type="number" id="prix" name="prix" placeholder="Prix à la sortie" required>
-          <input type="date" id="dateSortie" name="dateSortie" placeholder="Date de sortie" required>
-          <input type="text" id="synopsis" name="synopsis" placeholder="Synopsis" required>
-          <input type="file" id="imageJeu" name="imageJeu" accept="image/png, image/jpeg" />
-          <input type="submit" value="Créer le jeu" id="creajeu"/>
-          <?php
-            $categories = listCategorie($mysqli);
-            $supports = listSupport($mysqli);
-            listCategorieOption($categories);
-            listSupportOption($supports);
-          ?>
+          <select name="idJeu" id="idJeu">
+            <?php
+              $jeux = listJeu($mysqli);
+              listJeuOption($jeux);
+            ?>
+          </select>
+          <input type="text" id="titre" name="titre" placeholder="Titre de l'avis" required>
+          <input type="text" id="texte" name="texte" placeholder="Contenu de l'avis" required>
+          <input type="number" id="noteAvis" name="noteAvis" placeholder="Note de l'avis" required>
+          <input type="hidden" value="<?php echo $_GET['idJeu']; ?>" />
+          <input type="submit" value="Créer l'avis" id="creaavis"/>
         </fieldset>
       </form>
-      <a href="../connection/">Se connecter</a>
     </main>
     <?php include("../static/footer.php"); ?>
   </body> 

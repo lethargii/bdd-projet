@@ -50,5 +50,21 @@ function listJeuOption($jeux){
   }
 }
 
-?>
+function listCategorieOption($categories){
+  foreach($categories as $categorie){
+    $idCategorie = $categorie['idCategorie'];
+    $nomCategorie = $categorie['nomCategorie'];
+    echo "<input type='checkbox' name='categorie' value='$idCategorie' id='$idCategorie'>";
+    echo "<label for='$idCategorie'>$nomCategorie</label>";
+  }
+}
+
+function listSupportOption($supports){
+  foreach($supports as $support){
+    $idSupport = $support['idSupport'];
+    $nomSupport = $support['nomSupport'];
+    echo "<input type='checkbox' name='categorie' value='$idSupport' id='$idSupport'>";
+    echo "<label for='$idSupport'>$nomSupport</label>";
+  }
+}
 ?>

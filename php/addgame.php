@@ -21,6 +21,17 @@ move_uploaded_file($_FILES['imageJeu']['tmp_name'], "../". $lienImage);
 writeDB($mysqli, "INSERT INTO image (lienImage) VALUES ('$lienImage')");
 $idImage = readDB($mysqli, "SELECT idImage FROM image WHERE lienImage = '$lienImage'")[0]['idImage'];
 writeDB($mysqli, "INSERT INTO jeu (nom, prix, dateSortie, synopsis, idImage) VALUES ('$nom', '$prix', '$dateSortie', '$synopsis', '$idImage')");
+$idJeu = readDB($mysqli, "SELECT idJeu FROM jeu WHERE nom = '$nom' AND dateSortie = '$dateSortie'")[0]['idJeu'];
+if(isset($form['idSupport'])){
+  foreach($form['idSupport'] as $idSupport){
+    writeDB($mysqli, "INSERT INTO supportsJeu VALUES ('$idJeu', '$idSupport')");
+  }
+}
+if(isset($form['idCategorie'])){
+  foreach($form['idCategorie'] as $idCategorie){
+    writeDB($mysqli, "INSERT INTO categoriesJeu VALUES ('$idJeu', '$idCategorie')");
+  }
+}
 closeDB($mysqli);
 header('Location: ../');
 ?>

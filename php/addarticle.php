@@ -12,15 +12,17 @@ require_once("../php/functions_query.php");
 require_once("../php/functions_structure.php");
 $mysqli = connectionDB();
 $form = $_POST;
+$idJeu = $form['idJeu'];
 $titre = $form['titre'];
 $contenu = $form['contenu'];
 $noteArticle = $form['noteArticle'];
 $caracteristiques = $form['caracteristiques'];
-$lienImage = "images/jeu/" . $nom . ".png";
-move_uploaded_file($_FILES['imageJeu']['tmp_name'], "../". $lienImage);
-writeDB($mysqli, "INSERT INTO image (lienImage) VALUES ('$lienImage')");
-$idImage = readDB($mysqli, "SELECT idImage FROM image WHERE lienImage = '$lienImage'")[0]['idImage'];
-writeDB($mysqli, "INSERT INTO jeu (nom, prix, dateSortie, synopsis, idImage) VALUES ('$nom', '$prix', '$dateSortie', '$synopsis', '$idImage')");
+$login = $_SESSION['login'];
+/* $lienImage = "images/jeu/" . $nom . ".png"; */
+/* move_uploaded_file($_FILES['imageJeu']['tmp_name'], "../". $lienImage); */
+/* writeDB($mysqli, "INSERT INTO image (lienImage) VALUES ('$lienImage')"); */
+/* $idImage = readDB($mysqli, "SELECT idImage FROM image WHERE lienImage = '$lienImage'")[0]['idImage']; */
+writeDB($mysqli, 'INSERT INTO article (idJeu, titre, contenu, noteArticle, caracteristiques, login) VALUES ("' . $idJeu . '", "' . $titre . '", "' . $contenu . '", "' . $noteArticle . '", "' . $caracteristiques . '", "' . $login . '")');
 closeDB($mysqli);
 header('Location: ../');
 ?>

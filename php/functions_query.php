@@ -25,4 +25,12 @@ function profilQuery($mysqli, $login){
 function listJeu($mysqli){
   return readDB($mysqli, "SELECT idJeu, nom FROM jeu");
 }
+
+function listCategorie($mysqli){
+  return readDB($mysqli, "SELECT idCategorie, nomCategorie FROM categorie");
+}
+
+function listSupport($mysqli){
+  return readDB($mysqli, "SELECT idSupport, nomSupport FROM support");
+}
 ?>
