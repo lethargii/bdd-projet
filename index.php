@@ -16,24 +16,23 @@ $bdd=getBDD($mysqli);
 <!DOCTYPE html>
 <?php
 include("static/html.php");
+include("static/head.php");
 ?>
-  <head>
-    <meta charset="utf-8">
-    <title>Accueil - jeu videal</title>
-    <link rel="icon" href="images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <meta name="keywords" content="BDD-IHM, TD, CUPGE2">
-    <meta name="author" content="ESIR">
-  </head>
   <body>
     <?php include("static/header.php"); ?>
     <?php include("static/nav.php"); ?>
     <main class="lilMargin">
       <?php
+        if (isset($_SESSION['is_connected'])) {
+            echo "<h2>Vous êtes connectés " . htmlspecialchars($_SESSION['login'])."</h2>";
+            echo "<h3>Votre id est : " . htmlspecialchars($_SESSION['id'])."</h3>";
+        }
         displayJV($bdd);
       ?>
     </main>
-    <?php include("static/footer.php"); ?>
+    <?php
+      include("static/footer.php");
+    ?>
   </body> 
 </html>
 <?php closeDB($mysqli); ?>
