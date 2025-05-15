@@ -45,4 +45,27 @@ function listCategorie($mysqli){
 function listSupport($mysqli){
   return readDB($mysqli, "SELECT idSupport, nomSupport FROM support");
 }
+
+//fonction qui donne les différents jeux
+function getBDD($mysqli){
+	return readDB($mysqli, "SELECT jeu.idJeu, jeu.nom, jeu.dateSortie
+      FROM jeu
+      ORDER BY jeu.dateSortie DESC");
+}
+
+//fonction qui donne les différentes catégories pour un jeu
+function getBDDcategorie($mysqli, $idJeu){
+  return readDB($mysqli, "SELECT categorie.nomCategorie
+      FROM categorie
+      INNER JOIN categoriesJeu ON categorie.idCategorie = categoriesJeu.idCategorie
+      WHERE categoriesJeu.idJeu = $idJeu");
+}
+
+//fonction qui donne les différents supports pour un jeu
+function getBDDsupport($mysqli, $idJeu){
+  return readDB($mysqli, "SELECT support.nomSupport
+      FROM support
+      INNER JOIN supportsJeu ON support.idSupport = supportsJeu.idSupport
+      WHERE supportsJeu.idJeu = $idJeu");
+}
 ?>
