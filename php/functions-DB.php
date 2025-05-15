@@ -56,11 +56,4 @@ function writeDB($mysqli, $sql_input)
   return false;
 
 }
-
-function getBDD($mysqli){
-	//Cette fonction est évidemment a changer
-	return readDB($mysqli, "SELECT jeu.idJeu, jeu.nom, jeu.dateSortie
-      FROM jeu
-      ORDER BY jeu.dateSortie DESC");
-}
 ?>
