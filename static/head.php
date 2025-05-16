@@ -4,9 +4,8 @@
     ?>
     <meta charset="utf-8">
     <meta name="keywords" content="BDD,IHM,jeux,video,jeux vidéales,jeux vidéos,jeux vidéo,jeux,video,jeux video,jeux videos,jeux vidéos,jeux vidéo,jeux vidéo,critique,critique de jeux,critique de jeux vidéo,critique de jeux vidéos,critique de jeux vidéo">
-    <meta name="author" content="Marc PRINCE et Lucien SW">
+    <meta name="author" content="Marc PRINCE et Lucien Sevault Wolber">
     <link rel="icon" href="images/imageSite/logo.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/balises.css">
     <link rel="stylesheet" type="text/css" href="styles/nav.css">
     <link rel="stylesheet" type="text/css" href="styles/douleur.css">

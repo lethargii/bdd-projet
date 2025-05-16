@@ -8,7 +8,7 @@ CREATE TABLE article (
   dateCreationArticle DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   dateModification    DATETIME NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   idJeu               BIGINT NOT NULL,
-  login               VARCHAR(300) NOT NULL,
+  login               VARCHAR(300) DEFAULT NULL ON UPDATE CASCADE,
   UNIQUE (idJeu)
   
 );
@@ -21,7 +21,7 @@ CREATE TABLE avis (
   noteAvis         TINYINT NOT NULL CHECK (noteAvis <= 10 AND noteAvis >= 0),
   dateCreationAvis DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   idJeu            BIGINT NOT NULL,
-  login            VARCHAR(300) NOT NULL
+  login            VARCHAR(300) DEFAULT NULL ON UPDATE CASCADE
   
 );
 

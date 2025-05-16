@@ -18,11 +18,16 @@ $contenu = $form['contenu'];
 $noteArticle = $form['noteArticle'];
 $caracteristiques = $form['caracteristiques'];
 $login = $_SESSION['login'];
-/* $lienImage = "images/jeu/" . $nom . ".png"; */
-/* move_uploaded_file($_FILES['imageJeu']['tmp_name'], "../". $lienImage); */
-/* writeDB($mysqli, "INSERT INTO image (lienImage) VALUES ('$lienImage')"); */
-/* $idImage = readDB($mysqli, "SELECT idImage FROM image WHERE lienImage = '$lienImage'")[0]['idImage']; */
 writeDB($mysqli, 'INSERT INTO article (idJeu, titre, contenu, noteArticle, caracteristiques, login) VALUES ("' . $idJeu . '", "' . $titre . '", "' . $contenu . '", "' . $noteArticle . '", "' . $caracteristiques . '", "' . $login . '")');
+$idArticle = readDB($mysqli, "SELECT idArticle FROM article WHERE idJeu = '$idJeu'")[0]['idArticle'];
+print_r($_FILES['imagesArticle']);
+$nbImage = 1;
+foreach($_FILES['imagesArticle']['tmp_name'] as $file){
+  $lienImage = "images/article/" . $idJeu . "-" . $nbImage . ".png";
+  move_uploaded_file($file, "../" . $lienImage);
+  writeDB($mysqli, "INSERT INTO image (lienImage, idArticle) VALUES ('$lienImage', '$idArticle')");
+  $nbImage = $nbImage + 1;
+}
 closeDB($mysqli);
 header('Location: ../');
 ?>

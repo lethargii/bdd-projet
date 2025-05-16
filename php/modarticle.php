@@ -13,14 +13,31 @@ require_once("../php/functions_structure.php");
 $mysqli = connectionDB();
 $form = $_POST;
 $idJeu = $form['idJeu'];
+$idArticle = readDB($mysqli, "SELECT idArticle FROM article WHERE idJeu = '$idJeu'")[0]['idArticle'];
 $titre = $form['titre'];
 $contenu = $form['contenu'];
 $noteArticle = $form['noteArticle'];
 $caracteristiques = $form['caracteristiques'];
-/* $lienImage = "images/avatar/" . $login . ".png"; */
-/* move_uploaded_file($_FILES['avatar']['tmp_name'], "../". $lienImage); */
-/* writeDB($mysqli, "INSERT INTO image (lienImage) VALUES ('$lienImage')"); */
-/* $idImage = readDB($mysqli, "SELECT idImage FROM image WHERE lienImage = '$lienImage'")[0]['idImage']; */
+if($_FILES['imagesArticle']['error'][0] == UPLOAD_ERR_OK){
+  $oldimages = infoArticle($mysqli, $idJeu);
+  // Remove all images from filesystem
+  if(!empty($oldimages)){
+    foreach($oldimages as $oldimage){
+      $lienImage = $oldimage['lienImage'];
+      unlink("../" . $oldimage['lienImage']);
+  // Remove all images from database
+      writeDB($mysqli, "DELETE FROM image WHERE lienImage = '$lienImage'");
+    }
+  }
+  // Add new images to database
+  $nbImage = 1;
+  foreach($_FILES['imagesArticle']['tmp_name'] as $file){
+    $lienImage = "images/article/" . $idJeu . "-" . $nbImage . ".png";
+    move_uploaded_file($file, "../" . $lienImage);
+    writeDB($mysqli, "INSERT INTO image (lienImage, idArticle) VALUES ('$lienImage', '$idArticle')");
+    $nbImage = $nbImage + 1;
+  }
+}
 writeDB($mysqli, "UPDATE article SET titre = \"$titre\", contenu = \"$contenu\", noteArticle = '$noteArticle', caracteristiques = \"$caracteristiques\"
   WHERE idJeu = '$idJeu'");
 closeDB($mysqli);

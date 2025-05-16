@@ -35,6 +35,7 @@ $mysqli = connectionDB();
             $article = infoArticle($mysqli, $_GET['idJeu']);
             modarticle($article);
           ?>
+          <input type="file" id="imagesArticle" name="imagesArticle[]" accept="image/png, image/jpeg" multiple>
           <input type="hidden" name="idJeu" value="<?php echo $_GET['idJeu']; ?>" />
           <input type="submit" value="Enregistrer" id="modarticle"/>
         </fieldset>

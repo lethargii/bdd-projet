@@ -42,7 +42,7 @@ $mysqli = connectionDB();
           <input type="text" id="contenu" name="contenu" placeholder="Contenu de l'article" required>
           <input type="number" id="noteArticle" name="noteArticle" placeholder="Note du jeu" required>
           <input type="text" id="caracteristiques" name="caracteristiques" placeholder="Caractéristiques du jeu" required>
-          <input type="file" id="imagesArticle" name="imagesArticles" accept="image/png, image/jpeg" multiple>
+          <input type="file" id="imagesArticle" name="imagesArticle[]" accept="image/png, image/jpeg" multiple>
           <input type="submit" value="Créer l'article" id="creaarticle"/>
         </fieldset>
       </form>

@@ -35,6 +35,7 @@ $mysqli = connectionDB();
             $utilisateur = infoUtilisateur($mysqli, $_SESSION['login']);
             modprofil($utilisateur);
           ?>
+          <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
           <input type="submit" value="Enregistrer" id="modprofil"/>
         </fieldset>
       </form>
