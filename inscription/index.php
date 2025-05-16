@@ -14,6 +14,10 @@ require_once("../php/functions-DB.php");
 require_once("../php/functions_query.php");
 require_once("../php/functions_structure.php");
 $mysqli = connectionDB();
+if(isset($_SESSION['logged']) && $_SESSION['logged']){
+  closeDB($mysqli);
+  header('Location: ../');
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,8 +42,6 @@ $mysqli = connectionDB();
           <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>
           <input type="email" id="mel" name="mel" placeholder="Adresse mail" required>
           <input type="date" id="dateNaissance" name="dateNaissance" placeholder="Date de naissance" required>
-          <input type="checkbox" id="modo" name="modo" />
-          <label for="modo">Modérateur</label>
           <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
           <input type="submit" value="S'inscrire" id="signin"/>
         </fieldset>

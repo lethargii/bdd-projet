@@ -75,7 +75,7 @@ CREATE TABLE utilisateur (
   prenom        VARCHAR(300) NOT NULL,
   mel           VARCHAR(300) NOT NULL,
   dateNaissance DATE NOT NULL,
-  modo          BOOLEAN NOT NULL,
+  role          VARCHAR(6),
   idImage       BIGINT NULL,
   UNIQUE (idImage)
   

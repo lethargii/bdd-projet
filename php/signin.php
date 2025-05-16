@@ -11,6 +11,10 @@ require_once("../php/functions-DB.php");
 require_once("../php/functions_query.php");
 require_once("../php/functions_structure.php");
 $mysqli = connectionDB();
+if((isset($_SESSION['logged']) && $_SESSION['logged']) || empty($_POST)){
+  closeDB($mysqli);
+  header('Location: ../');
+}
 $form = $_POST;
 if(existUtilisateur($mysqli, $form)){
   closeDB($mysqli);
@@ -22,17 +26,12 @@ $nom = $form['nom'];
 $prenom = $form['prenom'];
 $mel = $form['mel'];
 $dateNaissance = $form['dateNaissance'];
-if($form['modo'] == 'on'){
-  $modo = true;
-}
-else{
-  $modo = false;
-}
+$role = "membre";
 $lienImage = "images/avatar/" . $login . ".png";
 move_uploaded_file($_FILES['avatar']['tmp_name'], "../". $lienImage);
 writeDB($mysqli, "INSERT INTO image (lienImage) VALUES ('$lienImage')");
 $idImage = readDB($mysqli, "SELECT idImage FROM image WHERE lienImage = '$lienImage'")[0]['idImage'];
-writeDB($mysqli, "INSERT INTO utilisateur VALUES ('$login', '$mdp', '$nom', '$prenom', '$mel', '$dateNaissance', '$modo', '$idImage')");
+writeDB($mysqli, "INSERT INTO utilisateur VALUES ('$login', '$mdp', '$nom', '$prenom', '$mel', '$dateNaissance', '$role', '$idImage')");
 closeDB($mysqli);
 header('Location: ../');
 ?>

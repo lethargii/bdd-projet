@@ -23,13 +23,20 @@ function loginCorrect($mysqli, $utilisateur){
   return !empty($inf);
 }
 
+function roleUtilisateur($mysqli, $utilisateur){
+  $login = $utilisateur['login'];
+  $mdp = $utilisateur['mdp'];
+  $role = readDB($mysqli, "SELECT role FROM utilisateur WHERE login = '$login' AND mdp = '$mdp'");
+  return $role;
+}
+
 function existUtilisateur($mysqli, $utilisateur){
   $login = $utilisateur['login'];
   return !empty(readDB($mysqli, "SELECT * FROM utilisateur WHERE login = '$login'"));
 }
 
 function profilQuery($mysqli, $login){
-  return readDB($mysqli, "SELECT login, nom, prenom, mel, dateNaissance, modo, lienImage FROM utilisateur
+  return readDB($mysqli, "SELECT login, nom, prenom, mel, dateNaissance, role, lienImage FROM utilisateur
     INNER JOIN image ON utilisateur.idImage = image.idImage
     WHERE login = '$login'");
 }

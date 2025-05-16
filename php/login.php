@@ -11,13 +11,19 @@ require_once(__DIR__."/../php/functions-DB.php");
 require_once(__DIR__."/../php/functions_query.php");
 require_once(__DIR__."/../php/functions_structure.php");
 $mysqli = connectionDB();
+if((isset($_SESSION['logged']) && $_SESSION['logged']) || empty($_POST)){
+  closeDB($mysqli);
+  header('Location: ../');
+}
 $form = $_POST;
-if(!loginCorrect($mysqli, $form)){
+$role = roleUtilisateur($mysqli, $form);
+if(empty($role)){
   closeDB($mysqli);
   header('Location: ../connection?error=1');
 }
 else{
   $_SESSION['login'] = $form['login'];
+  $_SESSION['role'] = $role[0]['role'];
   $_SESSION['logged'] = true;
 }
 closeDB($mysqli);

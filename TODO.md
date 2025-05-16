@@ -1,4 +1,5 @@
 # TODO
 
-- Modifier des images dans un article, changer image de profil
+- Pas de photo utilisateur
+- Accès à chaque page
 - Page d'acceuil et recherche

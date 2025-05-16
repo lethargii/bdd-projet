@@ -11,6 +11,10 @@ require_once("../php/functions-DB.php");
 require_once("../php/functions_query.php");
 require_once("../php/functions_structure.php");
 $mysqli = connectionDB();
+if(!isset($_SESSION['logged']) || !$_SESSION['logged']){
+  closeDB($mysqli);
+  header('Location: ../');
+}
 $idJeu = $_GET['idJeu'];
 writeDB($mysqli, "DELETE FROM article WHERE idJeu = '$idJeu'");
 closeDB($mysqli);
