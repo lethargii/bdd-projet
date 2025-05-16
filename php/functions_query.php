@@ -42,7 +42,7 @@ function profilQuery($mysqli, $login){
 }
 
 function listJeu($mysqli){
-  return readDB($mysqli, "SELECT idJeu, nom FROM jeu");
+  return readDB($mysqli, "SELECT jeu.idJeu, nom FROM jeu LEFT JOIN article ON jeu.idJeu = article.idJeu WHERE idArticle IS NULL");
 }
 
 function listCategorie($mysqli){
