@@ -41,7 +41,7 @@ if(isset($_SESSION['logged']) && $_SESSION['logged']){
           <input type="text" id="nom" name="nom" placeholder="Nom" required>
           <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>
           <input type="email" id="mel" name="mel" placeholder="Adresse mail" required>
-          <input type="date" id="dateNaissance" name="dateNaissance" placeholder="Date de naissance" required>
+          <input type="date" id="dateNaissance" name="dateNaissance" placeholder="Date de naissance" max="<?php echo date('Y-m-d', strtotime('-15 years')); ?>" required>
           <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
           <input type="submit" value="S'inscrire" id="signin"/>
         </fieldset>

@@ -28,7 +28,12 @@ $mel = $form['mel'];
 $dateNaissance = $form['dateNaissance'];
 $role = "membre";
 $lienImage = "images/avatar/" . $login . ".png";
-move_uploaded_file($_FILES['avatar']['tmp_name'], "../". $lienImage);
+if($_FILES['avatar']['error'] != 0){
+  copy("../images/imagesSite/user.png", "../" . $lienImage);
+}
+else{
+  move_uploaded_file($_FILES['avatar']['tmp_name'], "../". $lienImage);
+}
 writeDB($mysqli, "INSERT INTO image (lienImage) VALUES ('$lienImage')");
 $idImage = readDB($mysqli, "SELECT idImage FROM image WHERE lienImage = '$lienImage'")[0]['idImage'];
 writeDB($mysqli, "INSERT INTO utilisateur VALUES ('$login', '$mdp', '$nom', '$prenom', '$mel', '$dateNaissance', '$role', '$idImage')");
