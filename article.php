@@ -17,6 +17,7 @@ $tabNomJeu = getNomJeu($mysqli, $numero);
 $nomJeu = $tabNomJeu[0]['nom'];
 $idAvis = getIdAvis($mysqli, $numero);
 $admin = false;
+$synopsys = getSynopsis($mysqli, $numero);
 if (isset($_SESSION['is_connected'])){
   if ($_SESSION['role'] == 'admin'){
     $admin = true;
@@ -37,8 +38,11 @@ include("static/head.php");
             echo "<h2>Vous êtes connectés " . htmlspecialchars($_SESSION['login'])."</h2>";
             echo "<h3>Votre id est : " . htmlspecialchars($_SESSION['id'])."</h3>";
         }
+        echo "<h1>Ceci est l'article du jeu $nomJeu </h1>";
+        echo "<h2>Voici le synopsis du jeu : </h2>";
+        echo "<p>{$synopsys[0]['synopsis']}</p>";
+
         if (!empty($tabArticle[0])){
-          echo "<h1>Ceci est l'article du jeu $nomJeu </h1>";
           echo "<h2>{$tabArticle[0]['titre']}</h2>";
           echo "<p>{$tabArticle[0]['contenu']}</p>";
           echo "<p>Note de l'article : {$tabArticle[0]['noteArticle']}/10</p>";

@@ -132,6 +132,13 @@ function getIdAvis($mysqli, $idJeu){
       WHERE avis.idJeu = '$idJeu'");
 }
 
+//fonction qui me donne le synopsis d'un jeu
+function getSynopsis($mysqli, $idJeu){
+  return readDB($mysqli, "SELECT jeu.synopsis
+      FROM jeu
+      WHERE jeu.idJeu = '$idJeu'");
+}
+
 function modAvisPossible($mysqli, $login, $idAvis){
   return(!empty(readDB($mysqli, "SELECT * FROM avis WHERE login = '$login' AND idAvis = '$idAvis'")));
 }
