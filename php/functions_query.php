@@ -42,14 +42,14 @@ function profilQuery($mysqli, $login){
 }
 
 function profilArticleQuery($mysqli, $login){
-  return readDB($mysqli, "SELECT idArticle, titre, contenu, noteArticle, dateCreationArticle, dateModification, jeu.nom FROM utilisateur
+  return readDB($mysqli, "SELECT idArticle, titre, contenu, noteArticle, dateCreationArticle, dateModification, jeu.nom, article.idJeu FROM utilisateur
     INNER JOIN article ON utilisateur.login = article.login
     INNER JOIN jeu ON article.idJeu = jeu.idJeu
     WHERE utilisateur.login = '$login'");
 }
 
 function profilAvisQuery($mysqli, $login){
-  return readDB($mysqli, "SELECT idAvis, titre, texte, noteAvis, dateCreationAvis, jeu.nom FROM utilisateur
+  return readDB($mysqli, "SELECT idAvis, titre, texte, noteAvis, dateCreationAvis, jeu.nom, avis.idJeu FROM utilisateur
     INNER JOIN avis ON utilisateur.login = avis.login
     INNER JOIN jeu ON avis.idJeu = jeu.idJeu
     WHERE utilisateur.login = '$login'");

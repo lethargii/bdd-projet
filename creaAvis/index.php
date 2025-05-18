@@ -14,11 +14,11 @@ require_once("../php/functions-DB.php");
 require_once("../php/functions_query.php");
 require_once("../php/functions_structure.php");
 $mysqli = connectionDB();
-if(!isset($_SESSION['logged']) || !$_SESSION['logged'] || !isset($_GET['idJeu'])){
+if(!isset($_GET['idJeu'])){
   closeDB($mysqli);
   header('Location: ../');
 }
-if(creaAvisPossible($mysqli, $_SESSION['login'], $_GET['idJeu'])){
+if(!creaAvisPossible($mysqli, $_SESSION['login'], $_GET['idJeu'])){
   closeDB($mysqli);
   header('Location: ../');
 }
@@ -38,7 +38,7 @@ include("../static/head.php");
           <input type="text" id="titre" name="titre" placeholder="Titre de l'avis" required>
           <input type="text" id="texte" name="texte" placeholder="Contenu de l'avis" required>
           <input type="number" id="noteAvis" name="noteAvis" placeholder="Note de l'avis" required>
-          <input type="hidden" value="<?php echo $_GET['idJeu']; ?>" />
+          <input type="hidden" name="idJeu" value="<?php echo $_GET['idJeu']; ?>" />
           <input type="submit" value="Créer l'avis" id="creaavis"/>
         </fieldset>
       </form>
