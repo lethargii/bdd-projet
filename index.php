@@ -29,7 +29,13 @@ if(isset($_GET['search'])){
 else{
   $search = "";
 }
-$bdd=getBDD($mysqli, $idCategorie, $idSupport, $search);
+if(isset($_GET['page'])){
+  $page = $_GET['page'];
+}
+else{
+  $page = "";
+}
+$bdd=getBDD($mysqli, $idCategorie, $idSupport, $search, $page);
 ?>
 <!DOCTYPE html>
 <?php
