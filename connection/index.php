@@ -39,6 +39,6 @@ include("../static/head.php");
       <a href="../inscription/">S'inscrire</a>
     </main>
     <?php include("../static/footer.php"); ?>
-  </body> 
+  </body>
 </html>
 <?php closeDB($mysqli); ?>
