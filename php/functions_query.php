@@ -41,6 +41,20 @@ function profilQuery($mysqli, $login){
     WHERE login = '$login'");
 }
 
+function profilArticleQuery($mysqli, $login){
+  return readDB($mysqli, "SELECT idArticle, titre, contenu, noteArticle, dateCreationArticle, dateModification, jeu.nom FROM utilisateur
+    INNER JOIN article ON utilisateur.login = article.login
+    INNER JOIN jeu ON article.idJeu = jeu.idJeu
+    WHERE utilisateur.login = '$login'");
+}
+
+function profilAvisQuery($mysqli, $login){
+  return readDB($mysqli, "SELECT idAvis, titre, texte, noteAvis, dateCreationAvis, jeu.nom FROM utilisateur
+    INNER JOIN avis ON utilisateur.login = avis.login
+    INNER JOIN jeu ON avis.idJeu = jeu.idJeu
+    WHERE utilisateur.login = '$login'");
+}
+
 function listJeu($mysqli){
   return readDB($mysqli, "SELECT jeu.idJeu, nom FROM jeu LEFT JOIN article ON jeu.idJeu = article.idJeu WHERE idArticle IS NULL");
 }

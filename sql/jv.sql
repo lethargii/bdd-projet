@@ -8,7 +8,7 @@ CREATE TABLE article (
   dateCreationArticle DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   dateModification    DATETIME NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   idJeu               BIGINT NOT NULL,
-  login               VARCHAR(300) DEFAULT NULL ON UPDATE CASCADE,
+  login               VARCHAR(300) DEFAULT NULL,
   UNIQUE (idJeu)
   
 );
@@ -21,7 +21,7 @@ CREATE TABLE avis (
   noteAvis         TINYINT NOT NULL CHECK (noteAvis <= 10 AND noteAvis >= 0),
   dateCreationAvis DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   idJeu            BIGINT NOT NULL,
-  login            VARCHAR(300) DEFAULT NULL ON UPDATE CASCADE
+  login            VARCHAR(300) DEFAULT NULL
   
 );
 
@@ -81,11 +81,11 @@ CREATE TABLE utilisateur (
   
 );
 
-ALTER TABLE article ADD FOREIGN KEY (login) REFERENCES utilisateur (login);
+ALTER TABLE article ADD FOREIGN KEY (login) REFERENCES utilisateur (login) ON UPDATE CASCADE;
 ALTER TABLE jeu ADD FOREIGN KEY (idImage) REFERENCES image (idImage);
 ALTER TABLE article ADD FOREIGN KEY (idJeu) REFERENCES jeu (idJeu);
 
-ALTER TABLE avis ADD FOREIGN KEY (login) REFERENCES utilisateur (login);
+ALTER TABLE avis ADD FOREIGN KEY (login) REFERENCES utilisateur (login) ON UPDATE CASCADE;
 ALTER TABLE avis ADD FOREIGN KEY (idJeu) REFERENCES jeu (idJeu);
 
 ALTER TABLE categoriesJeu ADD FOREIGN KEY (idCategorie) REFERENCES categorie (idCategorie);
@@ -165,7 +165,6 @@ INSERT INTO support (nomSupport) VALUES
     ('PlayStation Vita'),
     ('Neo Geo Pocket'),
     ('Neo Geo Pocket Color'),
-            $categories = listCategorie($mysqli);
     ('Sega Game Gear'),
     ('WonderSwan'),
     ('WonderSwan Color'),

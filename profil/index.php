@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['logged']) || $_SESSION['logged'] == false){
+if(empty($_GET)){
   header("Location: ../");
 }
 //affichage des erreurs côté PHP et côté MYSQLI
@@ -30,8 +30,11 @@ $mysqli = connectionDB();
     <?php include("../static/nav.php"); ?>
     <main>
       <?php
-        $profil = profilQuery($mysqli, $_SESSION['login']);
-        print_r($profil); 
+      $profil = profilQuery($mysqli, $_GET['login']);
+      $articles = profilArticleQuery($mysqli, $_GET['login']);
+      $avis = profilAvisQuery($mysqli, $_GET['login']);
+      $private = (isset($_SESSION['login']) && ($_SESSION['login'] == $_GET['login']));
+      profilDisplay($profil, $articles, $avis, $private);
       ?>
       <a href="../creaJeu">Créer un jeu</a>
       <a href="../creaArticle">Créer un article pour un jeu</a>
