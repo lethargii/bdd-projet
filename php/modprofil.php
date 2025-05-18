@@ -27,9 +27,6 @@ $nom = $form['nom'];
 $prenom = $form['prenom'];
 $mel = $form['mel'];
 $dateNaissance = $form['dateNaissance'];
-/* move_uploaded_file($_FILES['avatar']['tmp_name'], "../". $lienImage); */
-/* writeDB($mysqli, "INSERT INTO image (lienImage) VALUES ('$lienImage')"); */
-/* $idImage = readDB($mysqli, "SELECT idImage FROM image WHERE lienImage = '$lienImage'")[0]['idImage']; */
 writeDB($mysqli, "UPDATE utilisateur SET login = '$login', mdp = '$mdp', nom = '$nom', prenom = '$prenom', mel = '$mel', dateNaissance = '$dateNaissance'
   WHERE login = '$oldlogin'");
 $lienImage = "images/avatar/" . $login . ".png";
