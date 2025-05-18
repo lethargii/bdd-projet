@@ -16,7 +16,6 @@ $tabArticle=infoArticle($mysqli, $numero);
 $tabNomJeu = getNomJeu($mysqli, $numero);
 $nomJeu = $tabNomJeu[0]['nom'];
 $idAvis = getIdAvis($mysqli, $numero);
-$owner = false;
 $admin = false;
 if (isset($_SESSION['is_connected'])){
   if ($_SESSION['role'] == 'admin'){
@@ -61,6 +60,9 @@ include("static/head.php");
 
             if ($wroteBy[0]['login'] == $_SESSION['login']){
               $owner = true;
+            }
+            else{
+              $owner = false;
             }
             
             avisDisplay($idA['idAvis'], $owner, $admin);
