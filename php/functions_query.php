@@ -98,12 +98,12 @@ function getBDD($mysqli, $idCategorie, $idSupport, $search, $page){
       }
     }
   }
-  $query .= " ORDER BY jeu.dateSortie";
+  $query .= " GROUP BY jeu.nom ORDER BY jeu.dateSortie";
   if($page = ""){
     $query .= " LIMIT 5";
   }
   else{
-    $query .= " LIMIT 5, " . $page * 5;
+    $query .= " LIMIT 5";
   }
   return(readDB($mysqli, $query));
 }

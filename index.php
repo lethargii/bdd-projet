@@ -46,8 +46,9 @@ include("static/nav.php");
 ?>
   <body>
     <main class="lilMargin">
-      <?php
-        displayJV($bdd, $mysqli);
+    <?php
+    displayJV($bdd, $mysqli);
+    $nbPage = count($bdd);
         // On peut ajouter ici si l'utilisateur possède le jeu ou pas
       ?>
     </main>
