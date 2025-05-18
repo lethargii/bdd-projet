@@ -77,19 +77,28 @@ function getBDD($mysqli, $idCategorie, $idSupport, $search){
       FROM jeu
   INNER JOIN image ON jeu.idImage = image.idImage
   LEFT JOIN categoriesJeu ON jeu.idJeu = categoriesJeu.idJeu
-  LEFT JOIN supportsJeu ON jeu.idJeu = supportsJeu.idJeu
-  ORDER BY jeu.dateSortie";
-  /* WHERE jeu.nom LIKE '%$search%'"; */
-  $searching = false;
+  LEFT JOIN supportsJeu ON jeu.idJeu = supportsJeu.idJeu";
+  $querySearch = array();
   if($search != ""){
-    /* $query = $query . ""; */
+    $querySearch[] = "jeu.nom LIKE '%$search%'";
   }
   if($idCategorie != ""){
-    /* $query = $query . " AND idCategorie = $idCategorie"; */
+    $querySearch[] = "idCategorie = $idCategorie";
   }
   if($idSupport != ""){
-    /* $query = $query . " AND idSupport = $idSupport"; */
+    $querySearch[] = "idSupport = $idSupport";
   }
+  if(!empty($querySearch)){
+    foreach($querySearch as $i => $querySearchh){
+      if($i == 0){
+        $query .= " WHERE " . $querySearchh;
+      }
+      else{
+        $query .= " AND " . $querySearchh;
+      }
+    }
+  }
+  $query .= " ORDER BY jeu.dateSortie";
   return(readDB($mysqli, $query));
 }
 

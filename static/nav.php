@@ -11,5 +11,20 @@
         echo "<li><a href='/jvcom/inscription'>S'inscrire</a></li>";
       }
     ?>
-    </ul>
+  </ul>
+  <form action="/jvcom"  method="GET">
+    <?php
+      $categories = listCategorie($mysqli);
+      $supports = listSupport($mysqli);
+    ?>
+    <input type=text name=search placeholder="Rechercher...">
+    <select name="idCategorie" id="idCategorie">
+      <option value="">Choisir une catégorie</option>
+      <?php listOption($categories, "idCategorie", "nomCategorie"); ?>
+    </select>
+    <select name="idSupport" id="idSupport">
+      <option value="">Choisir un support</option>
+      <?php listOption($supports, "idSupport", "nomSupport"); ?>
+    </select>
+  </form>
 </nav>
