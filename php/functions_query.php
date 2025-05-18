@@ -36,7 +36,7 @@ function existUtilisateur($mysqli, $utilisateur){
 }
 
 function profilQuery($mysqli, $login){
-  return readDB($mysqli, "SELECT login, nom, prenom, mel, dateNaissance, role, lienImage FROM utilisateur
+  return readDB($mysqli, "SELECT login, nom, prenom, mel, dateNaissance, dateCreationCompte, dateDerniereConnection, role, lienImage FROM utilisateur
     INNER JOIN image ON utilisateur.idImage = image.idImage
     WHERE login = '$login'");
 }
