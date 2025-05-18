@@ -14,7 +14,11 @@ require_once("../php/functions-DB.php");
 require_once("../php/functions_query.php");
 require_once("../php/functions_structure.php");
 $mysqli = connectionDB();
-if(!isset($_SESSION['logged']) || !$_SESSION['logged']){
+if(!isset($_SESSION['logged']) || !$_SESSION['logged'] || !isset($_GET['idJeu'])){
+  closeDB($mysqli);
+  header('Location: ../');
+}
+if(creaAvisPossible($mysqli, $_SESSION['login'], $_GET['idJeu'])){
   closeDB($mysqli);
   header('Location: ../');
 }
@@ -31,12 +35,6 @@ include("../static/head.php");
       <form action="../php/addavis.php" method="POST">
         <fieldset>
           <legend>Entrez vos informations</legend>
-          <select name="idJeu" id="idJeu">
-            <?php
-              $jeux = listJeu($mysqli);
-              listJeuOption($jeux);
-            ?>
-          </select>
           <input type="text" id="titre" name="titre" placeholder="Titre de l'avis" required>
           <input type="text" id="texte" name="texte" placeholder="Contenu de l'avis" required>
           <input type="number" id="noteAvis" name="noteAvis" placeholder="Note de l'avis" required>

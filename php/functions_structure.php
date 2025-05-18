@@ -200,7 +200,7 @@ function profilDisplay($profil, $articles, $avis, $private){
   echo "</div>";
   $img = "../" . $profil[0]['lienImage'];
   echo "<div>";
-  echo "<img src='$img'>";
+  echo "<img class='avatar' src='$img'>";
   echo "</div>";
   if($private){
     if(!empty($articles)){
@@ -230,6 +230,20 @@ function profilDisplay($profil, $articles, $avis, $private){
     echo "</div>";
     echo "<div>";
     echo '<a href="../modprofil">Modifier le profil</a>';
+    echo "</div>";
+    echo "<div>";
+    echo '<a class="danger" href="#supprprofil">Supprimer le compte</a>';
+    echo "<div id='supprprofil' class='modal'>";
+    echo "<div class='modalContent'>";
+    echo "<h1>";
+    echo "Êtes-vous sûr de vouloir supprimer votre compte ?";
+    echo "</h1>";
+    echo "<div>";
+    echo "<a class='danger' href='../php/supprprofil.php'>Oui</a>";
+    echo "<a href='#' class='modalClose safe'>Non</a>";
+    echo "</div>";
+    echo "</div>";
+    echo "</div>";
     echo "</div>";
   }
 }

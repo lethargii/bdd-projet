@@ -22,7 +22,9 @@ if(empty($role)){
   header('Location: ../connection?error=1');
 }
 else{
-  $_SESSION['login'] = $form['login'];
+  $login = $form['login'];
+  writeDB($mysqli, "UPDATE utilisateur SET dateDerniereConnection = CURRENT_TIMESTAMP WHERE login = '$login'");
+  $_SESSION['login'] = $login;
   $_SESSION['role'] = $role[0]['role'];
   $_SESSION['logged'] = true;
 }

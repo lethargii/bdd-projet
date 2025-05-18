@@ -90,4 +90,29 @@ function getBDDsupport($mysqli, $idJeu){
       INNER JOIN supportsJeu ON support.idSupport = supportsJeu.idSupport
       WHERE supportsJeu.idJeu = $idJeu");
 }
+
+function modAvisPossible($mysqli, $login, $idAvis){
+  return(!empty(readDB($mysqli, "SELECT * FROM avis WHERE login = '$login' AND idAvis = '$idAvis'")));
+}
+
+function supprAvisPossible($mysqli, $login, $idAvis, $role){
+  return($role == "admin" || modAvisPossible($mysqli, $login, $idAvis));
+}
+
+function modArticlePossible($mysqli, $login, $idJeu){
+  return(!empty(readDB($mysqli, "SELECT * FROM avis WHERE login = '$login' AND idJeu = '$idJeu'")));
+}
+
+function supprArticlePossible($mysqli, $login, $idArticle, $role){
+  return($role == "admin" || modArticlePossible($mysqli, $login, $idArticle));
+}
+
+function creaAvisPossible($mysqli, $login, $idJeu){
+  return(empty(readDB($mysqli, "SELECT * FROM avis WHERE idJeu = '$idJeu' AND login = '$login'")));
+}
+
+function creaArticlePossible($mysqli, $idJeu, $role){
+  return($role == "redac" && empty(readDB($mysqli, "SELECT * FROM article WHERE idJeu = '$idJeu'")));
+}
+
 ?>

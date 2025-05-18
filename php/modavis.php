@@ -11,13 +11,18 @@ require_once("../php/functions-DB.php");
 require_once("../php/functions_query.php");
 require_once("../php/functions_structure.php");
 $mysqli = connectionDB();
-if(!isset($_SESSION['logged']) || !$_SESSION['logged']){
+if(!isset($_SESSION['logged']) || !$_SESSION['logged'] || empty($_POST)){
   closeDB($mysqli);
   header('Location: ../');
 }
 $form = $_POST;
-$idJeu = $form['idJeu'];
+$login = $_SESSION['login'];
 $idAvis = $form['idAvis'];
+if(!modAvisPossible($mysqli, $login, $idAvis)){
+  closeDB($mysqli);
+  header('Location: ../');
+}
+$idJeu = $form['idJeu'];
 $titre = $form['titre'];
 $texte = $form['texte'];
 $noteAvis = $form['noteAvis'];

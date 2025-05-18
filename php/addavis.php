@@ -11,7 +11,7 @@ require_once("../php/functions-DB.php");
 require_once("../php/functions_query.php");
 require_once("../php/functions_structure.php");
 $mysqli = connectionDB();
-if(!isset($_SESSION['logged']) || !$_SESSION['logged']){
+if(!isset($_SESSION['logged']) || !$_SESSION['logged'] || empty($_POST)){
   closeDB($mysqli);
   header('Location: ../');
 }
@@ -21,6 +21,10 @@ $titre = $form['titre'];
 $texte = $form['texte'];
 $noteAvis = $form['noteAvis'];
 $login = $_SESSION['login'];
+if(!creaAvisPossible($mysqli, $login, $idJeu)){
+  closeDB($mysqli);
+  header('Location: ../');
+}
 writeDB($mysqli, 'INSERT INTO avis (idJeu, titre, texte, noteAvis, login) VALUES ("' . $idJeu . '", "' . $titre . '", "' . $texte . '", "' . $noteAvis . '", "' . $login . '")');
 closeDB($mysqli);
 header('Location: ../');

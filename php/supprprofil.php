@@ -11,18 +11,12 @@ require_once("../php/functions-DB.php");
 require_once("../php/functions_query.php");
 require_once("../php/functions_structure.php");
 $mysqli = connectionDB();
+if(!isset($_SESSION['logged']) || !$_SESSION['logged']){
+  closeDB($mysqli);
+  header('Location: ../');
+}
+$login = $_SESSION['login'];
+writeDB($mysqli, "DELETE FROM utilisateur WHERE login = '$login'");
+closeDB($mysqli);
+header('Location: ../php/logout.php');
 ?>
-<!DOCTYPE html>
-<?php
-include("../static/html.php");
-include("../static/head.php");
-?>
-  <body>
-    <?php include("../static/header.php"); ?>
-    <?php include("../static/nav.php"); ?>
-    <main>
-    </main>
-    <?php include("../static/footer.php"); ?>
-  </body> 
-</html>
-<?php closeDB($mysqli); ?>
