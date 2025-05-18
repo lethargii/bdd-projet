@@ -38,6 +38,12 @@ function listJeuOption($jeux){
   }
 }
 
+function listPages($nbPage){
+  for ($i=1; $i <= $nbPage; $i++) { 
+    echo "<option value=$i>$i</option>";
+  }
+}
+
 function listCategorieOption($categories){
   echo "<div>";
   foreach($categories as $categorie){
