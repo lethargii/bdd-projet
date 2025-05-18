@@ -12,6 +12,7 @@ require_once("./php/functions_query.php");
 require_once("./php/functions_structure.php");
 $mysqli = connectionDB();
 $bdd=getBDD($mysqli);
+$numero = $_GET['numero'];
 ?>
 <!DOCTYPE html>
 <?php
