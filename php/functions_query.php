@@ -73,7 +73,7 @@ function listSupport($mysqli){
 
 //fonction qui donne les différents jeux
 function getBDD($mysqli, $idCategorie, $idSupport, $search, $page){
-	$query = "SELECT jeu.idJeu, jeu.nom, jeu.dateSortie, image.lienImage
+	$query = "SELECT jeu.idJeu, jeu.nom, jeu.dateSortie, image.lienImage, COUNT(*)
       FROM jeu
   INNER JOIN image ON jeu.idImage = image.idImage
   LEFT JOIN categoriesJeu ON jeu.idJeu = categoriesJeu.idJeu
@@ -98,13 +98,14 @@ function getBDD($mysqli, $idCategorie, $idSupport, $search, $page){
       }
     }
   }
-  $query .= " ORDER BY jeu.dateSortie";
+  $query .= " GROUP BY jeu.nom ORDER BY jeu.dateSortie";
   if($page = ""){
     $query .= " LIMIT 5";
   }
   else{
     $query .= " LIMIT 5";
   }
+  echo $query;
   return(readDB($mysqli, $query));
 }
 

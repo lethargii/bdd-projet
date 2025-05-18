@@ -46,7 +46,8 @@ include("static/nav.php");
 ?>
   <body>
     <main class="lilMargin">
-      <?php
+    <?php
+        echo $bdd[0]['COUNT(*)'];
         displayJV($bdd, $mysqli);
         // On peut ajouter ici si l'utilisateur possède le jeu ou pas
       ?>
