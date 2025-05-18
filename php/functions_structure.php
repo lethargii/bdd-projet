@@ -130,7 +130,7 @@ function shortArticleDisplay($article, $owner, $admin){
     echo "Modifier l'article";
     echo "</a>";
     echo "</div>";
-    echo "<div>";
+    echo "<br><div>";
     echo "<a class='danger' href='#supprarticle$idJeu'>Supprimer l'article</a>";
     echo "<div id='supprarticle$idJeu' class='modal'>";
     echo "<div class='modalContent'>";
@@ -190,9 +190,9 @@ function avisDisplay($avis, $owner, $admin){
     echo "<br><h1>";
     echo "Êtes-vous sûr de vouloir supprimer cet avis ?";
     echo "</h1>";
-    echo "<br><div>";
-    echo "<br><a class='danger' href='../php/suppravis.php?idAvis=$idAvis'>Oui</a>";
-    echo "<br><a href='#' class='modalClose safe'>Non</a>";
+    echo "<div>";
+    echo "<a class='danger' href='../php/suppravis.php?idAvis=$idAvis'>Oui</a>";
+    echo "<a href='#' class='modalClose safe'>Non</a>";
     echo "</div>";
     echo "</div>";
     echo "</div>";
@@ -285,9 +285,9 @@ function profilDisplay($profil, $articles, $avis, $private){
     echo "<br><h1>";
     echo "Êtes-vous sûr de vouloir supprimer votre compte ?";
     echo "</h1>";
-    echo "<br><div>";
-    echo "<br><a class='danger' href='../php/supprprofil.php'>Oui</a>";
-    echo "<br><a href='#' class='modalClose safe'>Non</a>";
+    echo "<div>";
+    echo "<a class='danger' href='../php/supprprofil.php'>Oui</a>";
+    echo "<a href='#' class='modalClose safe'>Non</a>";
     echo "</div>";
     echo "</div>";
     echo "</div>";
