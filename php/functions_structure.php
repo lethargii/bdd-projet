@@ -22,6 +22,14 @@ function displayJV($bdd, $mysqli){
   echo "</div>";
 }
 
+function listOption($options, $idName, $nomName){
+  foreach($options as $option){
+    $id = $option[$idName];
+    $nom = $option[$nomName];
+    echo "<option value='$id'>$id - $nom</option>";
+  }
+}
+
 function listJeuOption($jeux){
   foreach($jeux as $jeu){
     $idJeu = $jeu['idJeu'];
