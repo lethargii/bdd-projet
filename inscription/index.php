@@ -20,7 +20,10 @@ if(isset($_SESSION['logged']) && $_SESSION['logged']){
 }
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<?php
+include("static/html.php");
+include("static/head.php");
+?>
   <head>
     <meta charset="utf-8">
     <title>Accueil - Poképédia</title>
