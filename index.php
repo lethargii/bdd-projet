@@ -14,11 +14,20 @@ $mysqli = connectionDB();
 if(isset($_GET['idSupport'])){
   $idSupport = $_GET['idSupport'];
 }
+else{
+  $idSupport = "";
+}
 if(isset($_GET['idCategorie'])){
   $idCategorie = $_GET['idCategorie'];
 }
+else{
+  $idCategorie = "";
+}
 if(isset($_GET['search'])){
   $search = $_GET['search'];
+}
+else{
+  $search = "";
 }
 $bdd=getBDD($mysqli, $idCategorie, $idSupport, $search);
 ?>
