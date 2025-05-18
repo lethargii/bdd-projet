@@ -55,6 +55,10 @@ function profilAvisQuery($mysqli, $login){
     WHERE utilisateur.login = '$login'");
 }
 
+function listArticleImage($mysqli, $idJeu){
+  return readDB($mysqli, "SELECT idImage, lienImage FROM article INNER JOIN image ON article.idArticle = image.idArticle WHERE idJeu='$idJeu'");
+}
+
 function listJeu($mysqli){
   return readDB($mysqli, "SELECT jeu.idJeu, nom FROM jeu LEFT JOIN article ON jeu.idJeu = article.idJeu WHERE idArticle IS NULL");
 }

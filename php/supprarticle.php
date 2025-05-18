@@ -22,6 +22,13 @@ if(!supprArticlePossible($mysqli, $login, $idJeu, $role)){
   closeDB($mysqli);
   header('Location: ../');
 }
+$images = listArticleImage($mysqli, $idJeu);
+if(!empty($images)){
+  foreach($images as $image){
+    $idImage = $image['idImage'];
+    writeDB($mysqli, "DELETE FROM image WHERE idImage = $idImage");
+  }
+}
 writeDB($mysqli, "DELETE FROM article WHERE idJeu = '$idJeu'");
 closeDB($mysqli);
 header('Location: ../');
