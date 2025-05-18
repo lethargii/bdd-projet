@@ -12,9 +12,13 @@
       }
     ?>
   </ul>
-  <form>
-    <fieldset>
-      <input type=text name=search>
-    </fieldset>
+  <form action="/jvcom"  method="GET">
+    <input type=text name=search placeholder="Rechercher...">
+    <select>
+
+    </select>
+    <select>
+
+    </select>
   </form>
 </nav>
