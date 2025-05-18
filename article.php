@@ -16,6 +16,12 @@ $tabArticle=infoArticle($mysqli, $numero);
 $tabNomJeu = getNomJeu($mysqli, $numero);
 $nomJeu = $tabNomJeu[0]['nom'];
 $idAvis = getIdAvis($mysqli, $numero);
+$owner, $admin = false;
+if (isset($_SESSION['is_connected'])){
+  if ($_SESSION['role'] == 'admin'){
+    $admin = true;
+  }
+}
 ?>
 <!DOCTYPE html>
 <?php
@@ -51,7 +57,12 @@ include("static/head.php");
             echo "<p>Date de création de l'avis : {$avis[0]['dateCreationAvis']}</p>";
             $wroteBy = infoUtilisateur($mysqli, $avis[0]['login']);
             echo "<p>Rédigé par : {$wroteBy[0]['login']}</p>";
-            avisDisplay($idA['idAvis'], 0, 0);
+
+            if ($wroteBy[0]['login'] == $_SESSION['login']){
+              $owner = true;
+            }
+            
+            avisDisplay($idA['idAvis'], $owner, $admin);
           }
         }
         
