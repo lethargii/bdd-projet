@@ -5,7 +5,7 @@ function displayJV($bdd, $mysqli, $nbPage){
   for($i=($nbPage-1)*5; $i < min($nbPage*5, count($bdd)); $i++){
     // On peut ajouter ici si l'utilisateur possède le jeu ou pas
     echo "<a href='article.php?numero=" . $bdd[$i]['idJeu'] . "' class='myLilPokeBloc'>";//ajouter une classe bloc
-    echo "<img src=" . $bdd[$i]['lienImage'] . " class='pokeLilImg'><br>";//a changer pour une image de jeu
+    echo "<img src='" . $bdd[$i]['lienImage'] . "' class='pokeLilImg'><br>";//a changer pour une image de jeu
     echo $bdd[$i]['nom'] . "<br>";
     echo "sortie le " . $bdd[$i]['dateSortie'] . "<br>";
     $tabCategories = getBDDcategorie($mysqli, $bdd[$i]['idJeu']);
