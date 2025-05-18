@@ -15,6 +15,7 @@ $numero = $_GET['numero'];
 $tabArticle=infoArticle($mysqli, $numero);
 $tabNomJeu = getNomJeu($mysqli, $numero);
 $nomJeu = $tabNomJeu[0]['nom'];
+$idAvis = getIdAvis($mysqli, $numero);
 ?>
 <!DOCTYPE html>
 <?php
@@ -39,6 +40,18 @@ include("static/head.php");
           echo "<p>Date de création de l'article : {$tabArticle[0]['dateCreationArticle']}</p>";
           echo "<p>Date de modification de l'article : {$tabArticle[0]['dateModification']}</p>";
         }
+        foreach ($idAvis as $idA){
+          $avis = infoAvis($mysqli, $idA['idAvis']);
+          if (!empty($avis[0])){
+            echo "<h2>{$avis[0]['titre']}</h2>";
+            echo "<p>{$avis[0]['texte']}</p>";
+            echo "<p>Note de l'avis : {$avis[0]['noteAvis']}/10</p>";
+            echo "<p>Date de création de l'avis : {$avis[0]['dateCreationAvis']}</p>";
+            $wroteBy = infoUtilisateur($mysqli, $avis[0]['login']);
+            echo "<p>Rédigé par : {$wroteBy[0]['login']}</p>";
+          }
+        }
+        avisDisplay($avis, 0, 0)
       ?>
     </main>
     <?php

@@ -116,6 +116,13 @@ function getNomJeu($mysqli, $idJeu){
       WHERE jeu.idJeu = '$idJeu'");
 }
 
+//fonction qui me donne les id d'avis d'un jeu
+function getIdAvis($mysqli, $idJeu){
+  return readDB($mysqli, "SELECT avis.idAvis
+      FROM avis
+      WHERE avis.idJeu = '$idJeu'");
+}
+
 function modAvisPossible($mysqli, $login, $idAvis){
   return(!empty(readDB($mysqli, "SELECT * FROM avis WHERE login = '$login' AND idAvis = '$idAvis'")));
 }
