@@ -36,9 +36,6 @@ $mysqli = connectionDB();
       $private = (isset($_SESSION['login']) && ($_SESSION['login'] == $_GET['login']));
       profilDisplay($profil, $articles, $avis, $private);
       ?>
-      <a href="../creaJeu">Créer un jeu</a>
-      <a href="../creaArticle">Créer un article pour un jeu</a>
-      <a href="../modprofil">Modifier le profil</a>
     </main>
     <?php include("../static/footer.php"); ?>
   </body> 

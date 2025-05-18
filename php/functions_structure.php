@@ -74,7 +74,7 @@ function profileditable($mysqli, $loginprec, $loginnew){
   return empty(readDB($mysqli, "SELECT * FROM utilisateur WHERE login = '$loginnew' AND login != '$loginprec'"));
 }
 
-function shortArticleDisplay($article){
+function shortArticleDisplay($article, $owner, $admin){
   echo "<div>";
   echo "<p>";
   echo $article['titre'];
@@ -105,9 +105,17 @@ function shortArticleDisplay($article){
   echo $article['nom'];
   echo "</p>";
   echo "</div>";
+  if($owner || $admin){
+    $idJeu = $article['idJeu'];
+    echo "<div>";
+    echo "<a href='../modArticle?idJeu=$idJeu'>";
+    echo "Modifier l'article";
+    echo "</a>";
+    echo "</div>";
+  }
 }
 
-function avisDisplay($avis){
+function avisDisplay($avis, $owner, $admin){
   echo "<div>";
   echo "<p>";
   echo $avis['titre'];
@@ -133,6 +141,15 @@ function avisDisplay($avis){
   echo $avis['nom'];
   echo "</p>";
   echo "</div>";
+  if($owner || $admin){
+    $idAvis = $avis['idAvis'];
+    $idJeu = $avis['idJeu'];
+    echo "<div>";
+    echo "<a href='../modAvis?idJeu=$idJeu&idAvis=$idAvis'>";
+    echo "Modifier l'avis";
+    echo "</a>";
+    echo "</div>";
+  }
 }
 
 function profilDisplay($profil, $articles, $avis, $private){
@@ -178,7 +195,7 @@ function profilDisplay($profil, $articles, $avis, $private){
       echo "</p>";
       echo "</div>";
       foreach($articles as $article)
-      shortArticleDisplay($article);
+      shortArticleDisplay($article, true, true);
     }
     if(!empty($avis)){
       echo "<div>";
@@ -187,9 +204,18 @@ function profilDisplay($profil, $articles, $avis, $private){
       echo "</p>";
       echo "</div>";
       foreach($avis as $avi){
-        avisDisplay($avi);
+        avisDisplay($avi, true, true);
       }
     }
+    echo "<div>";
+    echo '<a href="../creaJeu">Créer un jeu</a>';
+    echo "</div>";
+    echo "<div>";
+    echo '<a href="../creaArticle">Créer un article pour un jeu</a>';
+    echo "</div>";
+    echo "<div>";
+    echo '<a href="../modprofil">Modifier le profil</a>';
+    echo "</div>";
   }
 }
 ?>

@@ -75,6 +75,8 @@ CREATE TABLE utilisateur (
   prenom        VARCHAR(300) NOT NULL,
   mel           VARCHAR(300) NOT NULL,
   dateNaissance DATE NOT NULL,
+  dateCreationCompte DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  dateDerniereConnection    DATETIME NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   role          VARCHAR(6),
   idImage       BIGINT NULL,
   UNIQUE (idImage)
