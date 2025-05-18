@@ -69,8 +69,9 @@ function listSupport($mysqli){
 
 //fonction qui donne les différents jeux
 function getBDD($mysqli){
-	return readDB($mysqli, "SELECT jeu.idJeu, jeu.nom, jeu.dateSortie
+	return readDB($mysqli, "SELECT jeu.idJeu, jeu.nom, jeu.dateSortie, image.lienImage
       FROM jeu
+      INNER JOIN image ON jeu.idImage = image.idImage
       ORDER BY jeu.dateSortie DESC");
 }
 
