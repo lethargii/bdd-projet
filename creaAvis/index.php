@@ -37,7 +37,7 @@ include("../static/head.php");
           <legend>Entrez vos informations</legend>
           <input type="text" id="titre" name="titre" placeholder="Titre de l'avis" required>
           <input type="text" id="texte" name="texte" placeholder="Contenu de l'avis" required>
-          <input type="number" id="noteAvis" name="noteAvis" placeholder="Note de l'avis" required>
+          <input type="number" id="noteAvis" name="noteAvis" placeholder="Note de l'avis" min=0 max=10 required>
           <input type="hidden" name="idJeu" value="<?php echo $_GET['idJeu']; ?>" />
           <input type="submit" value="Créer l'avis" id="creaavis"/>
         </fieldset>
