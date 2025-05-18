@@ -1,6 +1,6 @@
 <header>
         <div>
-            <h1>Notre super tricite de jeu videal à nous</h1>
+            <h1>Notre super site de jeu videal à nous</h1>
             <p>(Je promet il est vrm bien)</p>
         </div>
         <a href="index.html">
