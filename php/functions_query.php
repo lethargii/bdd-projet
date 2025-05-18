@@ -103,7 +103,7 @@ function getBDD($mysqli, $idCategorie, $idSupport, $search, $page){
     $query .= " LIMIT 5";
   }
   else{
-    $query .= " LIMIT 5, " . $page * 5;
+    $query .= " LIMIT 5";
   }
   return(readDB($mysqli, $query));
 }
