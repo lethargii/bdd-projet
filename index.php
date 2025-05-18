@@ -27,7 +27,8 @@ include("static/head.php");
             echo "<h2>Vous êtes connectés " . htmlspecialchars($_SESSION['login'])."</h2>";
             echo "<h3>Votre id est : " . htmlspecialchars($_SESSION['id'])."</h3>";
         }
-        displayJV($bdd);
+        displayJV($bdd, $mysqli);
+        // On peut ajouter ici si l'utilisateur possède le jeu ou pas
       ?>
     </main>
     <?php
