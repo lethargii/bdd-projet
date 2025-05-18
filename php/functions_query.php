@@ -72,11 +72,21 @@ function listSupport($mysqli){
 }
 
 //fonction qui donne les différents jeux
-function getBDD($mysqli){
-	return readDB($mysqli, "SELECT jeu.idJeu, jeu.nom, jeu.dateSortie, image.lienImage
+function getBDD($mysqli, $idCategorie, $idSupport, $search){
+	$query = "SELECT jeu.idJeu, jeu.nom, jeu.dateSortie, image.lienImage
       FROM jeu
-      INNER JOIN image ON jeu.idImage = image.idImage
-      ORDER BY jeu.dateSortie DESC");
+  INNER JOIN image ON jeu.idImage = image.idImage
+  LEFT JOIN categoriesJeu ON jeu.idJeu = categoriesJeu.idJeu
+  LEFT JOIN supportsJeu ON jeu.idJeu = supportsJeu.idJeu
+  ORDER BY jeu.dateSortie
+  WHERE jeu.nom LIKE '%$search%'";
+  if($idCategorie != ""){
+    $query = $query . " AND idCategorie = $idCategorie";
+  }
+  if($idSupport != ""){
+    $query = $query . " AND idSupport = $idSupport";
+  }
+  return(readDB($mysqli, $query));
 }
 
 //fonction qui donne les différentes catégories pour un jeu

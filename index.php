@@ -11,7 +11,16 @@ require_once("./php/functions-DB.php");
 require_once("./php/functions_query.php");
 require_once("./php/functions_structure.php");
 $mysqli = connectionDB();
-$bdd=getBDD($mysqli);
+if(isset($_GET['idSupport'])){
+  $idSupport = $_GET['idSupport'];
+}
+if(isset($_GET['idCategorie'])){
+  $idCategorie = $_GET['idCategorie'];
+}
+if(isset($_GET['search'])){
+  $search = $_GET['search'];
+}
+$bdd=getBDD($mysqli, $idCategorie, $idSupport, $search);
 ?>
 <!DOCTYPE html>
 <?php
@@ -23,10 +32,6 @@ include("static/nav.php");
   <body>
     <main class="lilMargin">
       <?php
-        if (isset($_SESSION['is_connected'])) {
-            echo "<h2>Vous êtes connectés " . htmlspecialchars($_SESSION['login'])."</h2>";
-            echo "<h3>Votre id est : " . htmlspecialchars($_SESSION['id'])."</h3>";
-        }
         displayJV($bdd, $mysqli);
         // On peut ajouter ici si l'utilisateur possède le jeu ou pas
       ?>
