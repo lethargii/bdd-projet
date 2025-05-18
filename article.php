@@ -16,7 +16,8 @@ $tabArticle=infoArticle($mysqli, $numero);
 $tabNomJeu = getNomJeu($mysqli, $numero);
 $nomJeu = $tabNomJeu[0]['nom'];
 $idAvis = getIdAvis($mysqli, $numero);
-$owner, $admin = false;
+$owner = false;
+$admin = false;
 if (isset($_SESSION['is_connected'])){
   if ($_SESSION['role'] == 'admin'){
     $admin = true;
