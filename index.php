@@ -17,10 +17,10 @@ $bdd=getBDD($mysqli);
 <?php
 include("static/html.php");
 include("static/head.php");
+include("static/header.php");
+include("static/nav.php");
 ?>
   <body>
-    <?php include("static/header.php"); ?>
-    <?php include("static/nav.php"); ?>
     <main class="lilMargin">
       <?php
         if (isset($_SESSION['is_connected'])) {
