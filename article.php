@@ -30,7 +30,7 @@ include("static/head.php");
             echo "<h2>Vous êtes connectés " . htmlspecialchars($_SESSION['login'])."</h2>";
             echo "<h3>Votre id est : " . htmlspecialchars($_SESSION['id'])."</h3>";
         }
-        if (!empty(tabArticle[0])){
+        if (!empty($tabArticle[0])){
           echo "<h1>Ceci est l'article du jeu $nomJeu </h1>";
           echo "<h2>{$tabArticle[0]['titre']}</h2>";
           echo "<p>{$tabArticle[0]['contenu']}</p>";
