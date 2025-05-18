@@ -72,7 +72,7 @@ function listSupport($mysqli){
 }
 
 //fonction qui donne les différents jeux
-function getBDD($mysqli, $idCategorie, $idSupport, $search){
+function getBDD($mysqli, $idCategorie, $idSupport, $search, $page){
 	$query = "SELECT jeu.idJeu, jeu.nom, jeu.dateSortie, image.lienImage
       FROM jeu
   INNER JOIN image ON jeu.idImage = image.idImage
@@ -99,6 +99,12 @@ function getBDD($mysqli, $idCategorie, $idSupport, $search){
     }
   }
   $query .= " ORDER BY jeu.dateSortie";
+  if($page = ""){
+    $query .= " LIMIT 5";
+  }
+  else{
+    $query .= " LIMIT 5, " . $page * 5;
+  }
   return(readDB($mysqli, $query));
 }
 
