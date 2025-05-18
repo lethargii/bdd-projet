@@ -26,16 +26,16 @@ writeDB($mysqli, "INSERT INTO image (lienImage) VALUES ('$lienImage')");
 $idImage = readDB($mysqli, "SELECT idImage FROM image WHERE lienImage = '$lienImage'")[0]['idImage'];
 writeDB($mysqli, "INSERT INTO jeu (nom, prix, dateSortie, synopsis, idImage) VALUES ('$nom', '$prix', '$dateSortie', '$synopsis', '$idImage')");
 $idJeu = readDB($mysqli, "SELECT idJeu FROM jeu WHERE nom = '$nom' AND dateSortie = '$dateSortie'")[0]['idJeu'];
-if(isset($form['idSupport'])){
-  foreach($form['idSupport'] as $idSupport){
+if(isset($form['support'])){
+  foreach($form['support'] as $idSupport){
     writeDB($mysqli, "INSERT INTO supportsJeu VALUES ('$idJeu', '$idSupport')");
   }
 }
-if(isset($form['idCategorie'])){
-  foreach($form['idCategorie'] as $idCategorie){
+if(isset($form['categorie'])){
+  foreach($form['categorie'] as $idCategorie){
     writeDB($mysqli, "INSERT INTO categoriesJeu VALUES ('$idJeu', '$idCategorie')");
   }
 }
 closeDB($mysqli);
-header('Location: ../');
+/* header('Location: ../'); */
 ?>

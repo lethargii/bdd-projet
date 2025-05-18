@@ -43,7 +43,7 @@ function listSupportOption($supports){
   foreach($supports as $support){
     $idSupport = $support['idSupport'];
     $nomSupport = $support['nomSupport'];
-    echo "<input type='checkbox' name='categorie' value='$idSupport' id='$idSupport'>";
+    echo "<input type='checkbox' name='support' value='$idSupport' id='$idSupport'>";
     echo "<label for='$idSupport'>$nomSupport</label>";
   }
 }
