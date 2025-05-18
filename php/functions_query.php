@@ -107,5 +107,12 @@ function supprArticlePossible($mysqli, $login, $idArticle, $role){
   return($role == "admin" || modArticlePossible($mysqli, $login, $idArticle));
 }
 
+function creaAvisPossible($mysqli, $login, $idJeu){
+  return(empty(readDB($mysqli, "SELECT * FROM avis WHERE idJeu = '$idJeu' AND login = '$login'")));
+}
+
+function creaArticlePossible($mysqli, $idJeu, $role){
+  return($role == "redac" && empty(readDB($mysqli, "SELECT * FROM article WHERE idJeu = '$idJeu'")));
+}
 
 ?>
