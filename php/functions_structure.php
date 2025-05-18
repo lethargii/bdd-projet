@@ -200,7 +200,7 @@ function profilDisplay($profil, $articles, $avis, $private){
   echo "</div>";
   $img = "../" . $profil[0]['lienImage'];
   echo "<div>";
-  echo "<img src='$img'>";
+  echo "<img class='avatar' src='$img'>";
   echo "</div>";
   if($private){
     if(!empty($articles)){

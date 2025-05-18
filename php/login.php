@@ -22,6 +22,7 @@ if(empty($role)){
   header('Location: ../connection?error=1');
 }
 else{
+  writeDB($mysqli, "");
   $_SESSION['login'] = $form['login'];
   $_SESSION['role'] = $role[0]['role'];
   $_SESSION['logged'] = true;
