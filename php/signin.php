@@ -36,7 +36,7 @@ else{
 }
 writeDB($mysqli, "INSERT INTO image (lienImage) VALUES ('$lienImage')");
 $idImage = readDB($mysqli, "SELECT idImage FROM image WHERE lienImage = '$lienImage'")[0]['idImage'];
-writeDB($mysqli, "INSERT INTO utilisateur VALUES ('$login', '$mdp', '$nom', '$prenom', '$mel', '$dateNaissance', '$role', '$idImage')");
+writeDB($mysqli, "INSERT INTO utilisateur (login, mdp, nom, prenom, mel, dateNaissance, role, idImage) VALUES ('$login', '$mdp', '$nom', '$prenom', '$mel', '$dateNaissance', '$role', '$idImage')");
 closeDB($mysqli);
 header('Location: ../');
 ?>

@@ -11,18 +11,12 @@ require_once("../php/functions-DB.php");
 require_once("../php/functions_query.php");
 require_once("../php/functions_structure.php");
 $mysqli = connectionDB();
-if(!isset($_SESSION['logged']) || !$_SESSION['logged'] || !isset($_GET['idAvis'])){
+if(!isset($_SESSION['logged']) || !$_SESSION['logged']){
   closeDB($mysqli);
   header('Location: ../');
 }
 $login = $_SESSION['login'];
-$role = $_SESSION['role'];
-$idAvis = $_GET['idAvis'];
-if(!supprAvisPossible($mysqli, $login, $idAvis, $role)){
-  closeDB($mysqli);
-  header('Location: ../');
-}
-writeDB($mysqli, "DELETE FROM avis WHERE idAvis = '$idAvis'");
+writeDB($mysqli, "DELETE FROM utilisateur WHERE login = '$login'");
 closeDB($mysqli);
-header('Location: ../');
+header('Location: ../php/logout.php');
 ?>

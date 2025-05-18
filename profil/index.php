@@ -22,6 +22,7 @@ $mysqli = connectionDB();
     <title>Accueil - Poképédia</title>
     <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="../styles/modal.css">
     <meta name="keywords" content="BDD-IHM, TD, CUPGE2">
     <meta name="author" content="ESIR">
   </head>
