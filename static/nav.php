@@ -11,5 +11,10 @@
         echo "<li><a href='/jvcom/inscription'>S'inscrire</a></li>";
       }
     ?>
-    </ul>
+  </ul>
+  <form>
+    <fieldset>
+      <input type=text name=search>
+    </fieldset>
+  </form>
 </nav>
