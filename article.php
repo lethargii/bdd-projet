@@ -41,7 +41,7 @@ include("static/head.php");
           echo "<p>Date de modification de l'article : {$tabArticle[0]['dateModification']}</p>";
         }
         // créer un avis avec creaAvis/index.php
-        echo '<a href="../creaAvis">Donner ton avis</a>';
+        echo '<a href="../creaAvis"?idJeu='.$numero.>'Donner ton avis</a>';
         foreach ($idAvis as $idA){
           $avis = infoAvis($mysqli, $idA['idAvis']);
           if (!empty($avis[0])){
