@@ -22,6 +22,11 @@ $contenu = $form['contenu'];
 $noteArticle = $form['noteArticle'];
 $caracteristiques = $form['caracteristiques'];
 $login = $_SESSION['login'];
+$role = $_SESSION['role'];
+if(!creaArticlePossible($mysqli, $idJeu, $role)){
+  closeDB($mysqli);
+  header('Location: ../');
+}
 writeDB($mysqli, 'INSERT INTO article (idJeu, titre, contenu, noteArticle, caracteristiques, login) VALUES ("' . $idJeu . '", "' . $titre . '", "' . $contenu . '", "' . $noteArticle . '", "' . $caracteristiques . '", "' . $login . '")');
 $idArticle = readDB($mysqli, "SELECT idArticle FROM article WHERE idJeu = '$idJeu'")[0]['idArticle'];
 print_r($_FILES['imagesArticle']);

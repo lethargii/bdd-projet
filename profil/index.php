@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(empty($_GET)){
+if(!isset($_GET['login'])){
   header("Location: ../");
 }
 //affichage des erreurs côté PHP et côté MYSQLI

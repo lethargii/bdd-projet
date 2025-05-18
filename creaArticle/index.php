@@ -18,6 +18,10 @@ if(!isset($_SESSION['logged']) || !$_SESSION['logged']){
   closeDB($mysqli);
   header('Location: ../');
 }
+if($_SESSION['role'] != "redac"){
+  closeDB($mysqli);
+  header('Location: ../');
+}
 ?>
 <!DOCTYPE html>
 <?php
