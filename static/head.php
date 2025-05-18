@@ -7,15 +7,15 @@
     <meta charset="utf-8">
     <meta name="keywords" content="BDD,IHM,jeux,video,jeux vidéales,jeux vidéos,jeux vidéo,jeux,video,jeux video,jeux videos,jeux vidéos,jeux vidéo,jeux vidéo,critique,critique de jeux,critique de jeux vidéo,critique de jeux vidéos,critique de jeux vidéo">
     <meta name="author" content="Marc PRINCE et Lucien Sevault Wolber">
-    <link rel="icon" href="images/imageSite/logo.png">
+    <link rel="icon" href="<?php echo $RACINE; ?>/images/imagesSite/logo.png">
 
-    <link rel="stylesheet" type="text/css" href="<?php echo __DIR__ . '/../styles/balises.css'; ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo __DIR__ . '/../styles/nav.css'; ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo __DIR__ . '/../styles/douleur.css'; ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo __DIR__ . '/../styles/poke.css'; ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo __DIR__ . '/../styles/decoupe.css'; ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo __DIR__ . '/../styles/blocs.css'; ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo __DIR__ . '/../styles/formulaire.css'; ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo $RACINE; ?>/styles/balises.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $RACINE; ?>/styles/nav.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $RACINE; ?>/styles/douleur.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $RACINE; ?>/styles/poke.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $RACINE; ?>/styles/decoupe.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $RACINE; ?>/styles/blocs.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $RACINE; ?>/styles/formulaire.css">
 
     <!--import de police-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
