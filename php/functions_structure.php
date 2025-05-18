@@ -126,7 +126,7 @@ function shortArticleDisplay($article, $owner, $admin){
   if($owner || $admin){
     $idJeu = $article['idJeu'];
     echo "<div>";
-    echo "<a href='../modArticle?idJeu=$idJeu'>";
+    echo "<br>a href='../modArticle?idJeu=$idJeu'>";
     echo "Modifier l'article";
     echo "</a>";
     echo "</div>";
