@@ -104,27 +104,3 @@ Menu{
     margin: 2%;
     text-align: center;
 }
-
-.myLilPokeBloc:visited, .myLilPokeBloc:hover {
-    text-decoration: none;
-}
-.myLilPokeBloc:visited {
-    color: rgb(95, 117, 205);
-}
-.myLilPokeBloc:hover {
-    color: var(--colorY);
-    text-decoration: underline;
-}
-
-.myLilPokeBloc{
-    text-align: center;
-    margin: 0.5rem 0.5rem;
-    width: 12rem;
-    height: 17rem;
-    overflow: hidden;
-    display: inline-block;
-    background-color: var(--color1);
-    border-radius: var(--border-radius);
-    color: white;
-    text-decoration: none;
-}
