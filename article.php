@@ -49,7 +49,7 @@ include("static/head.php");
             echo "<p>Date de création de l'avis : {$avis[0]['dateCreationAvis']}</p>";
             $wroteBy = infoUtilisateur($mysqli, $avis[0]['login']);
             echo "<p>Rédigé par : {$wroteBy[0]['login']}</p>";
-            avisDisplay($avis, 0, 0)
+            //avisDisplay($avis, 0, 0)
           }
         }
         
