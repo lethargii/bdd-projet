@@ -24,7 +24,7 @@ $lienImage = "images/jeu/" . $dateSortie . $nom . ".png";
 move_uploaded_file($_FILES['imageJeu']['tmp_name'], "../". $lienImage);
 writeDB($mysqli, "INSERT INTO image (lienImage) VALUES ('$lienImage')");
 $idImage = readDB($mysqli, "SELECT idImage FROM image WHERE lienImage = '$lienImage'")[0]['idImage'];
-writeDB($mysqli, "INSERT INTO jeu (nom, prix, dateSortie, synopsis, idImage) VALUES ('$nom', '$prix', '$dateSortie', '$synopsis', '$idImage')");
+writeDB($mysqli, "INSERT INTO jeu (nom, prix, dateSortie, synopsis, idImage) VALUES ('$nom', '$prix', '$dateSortie', \"$synopsis\", '$idImage')");
 $idJeu = readDB($mysqli, "SELECT idJeu FROM jeu WHERE nom = '$nom' AND dateSortie = '$dateSortie'")[0]['idJeu'];
 print_r($form);
 if(isset($form['support'])){
