@@ -147,6 +147,9 @@ function shortArticleDisplay($article, $owner, $admin){
 }
 
 function avisDisplay($avis, $owner, $admin){
+  if (!is_array($avis)) {
+    return;
+  }
   echo "<div>";
   echo "<p>";
   echo $avis['titre'];
