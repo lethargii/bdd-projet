@@ -21,8 +21,8 @@ if(isset($_SESSION['logged']) && $_SESSION['logged']){
 ?>
 <!DOCTYPE html>
 <?php
-include("static/html.php");
-include("static/head.php");
+include("../static/html.php");
+include("../static/head.php");
 ?>
   <body>
     <?php include("../static/header.php"); ?>

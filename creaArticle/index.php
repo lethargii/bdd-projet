@@ -20,15 +20,10 @@ if(!isset($_SESSION['logged']) || !$_SESSION['logged']){
 }
 ?>
 <!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <title>Accueil - Poképédia</title>
-    <link rel="icon" href="images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <meta name="keywords" content="BDD-IHM, TD, CUPGE2">
-    <meta name="author" content="ESIR">
-  </head>
+<?php
+include("../static/html.php");
+include("../static/head.php");
+?>
   <body>
     <?php include("../static/header.php"); ?>
     <?php include("../static/nav.php"); ?>
