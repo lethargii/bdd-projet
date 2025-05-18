@@ -13,6 +13,9 @@ require_once("./php/functions_structure.php");
 $mysqli = connectionDB();
 $bdd=getBDD($mysqli);
 $numero = $_GET['numero'];
+$tabArticle=infoArticle($mysqli, $numero);
+$tabNomJeu = getNomJeu($mysqli, $numero);
+$nomJeu = $tabNomJeu[0]['nom'];
 ?>
 <!DOCTYPE html>
 <?php
@@ -28,7 +31,13 @@ include("static/head.php");
             echo "<h2>Vous êtes connectés " . htmlspecialchars($_SESSION['login'])."</h2>";
             echo "<h3>Votre id est : " . htmlspecialchars($_SESSION['id'])."</h3>";
         }
-        echo "<h1>Ceci est l'article du jeu $numero </h1>";
+        echo "<h1>Ceci est l'article du jeu $nomJeu </h1>";
+        echo "<h2>$tabArticle[0]['titre']</h2>";
+        echo "<p>$tabArticle[0]['contenu']</p>";
+        echo "<p>Note de l'article : $tabArticle[0]['noteArticle']</p>";
+        echo "<p>Caractéristiques du jeu : $tabArticle[0]['caracteristiques']</p>";
+        echo "<p>Date de création de l'article : $tabArticle[0]['dateCreationArticle']</p>";
+        echo "<p>Date de modification de l'article : $tabArticle[0]['dateModification']</p>";
       ?>
     </main>
     <?php

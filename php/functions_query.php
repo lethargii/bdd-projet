@@ -9,7 +9,7 @@ function infoAvis($mysqli, $idAvis){
 }
 
 function infoArticle($mysqli, $idJeu){
-  return readDB($mysqli, "SELECT article.*, jacquetteJeu.lienImage, imageArticle.lienImage FROM jeu
+  return readDB($mysqli, "SELECT article.*, jacquetteJeu.lienImage, imageArticle.lienImage, FROM jeu
     INNER JOIN article ON jeu.idJeu = article.idJeu
     INNER JOIN image AS jacquetteJeu ON jeu.idImage = jacquetteJeu.idImage
     LEFT JOIN image AS imageArticle ON article.idArticle = imageArticle.idArticle
@@ -89,6 +89,13 @@ function getBDDsupport($mysqli, $idJeu){
       FROM support
       INNER JOIN supportsJeu ON support.idSupport = supportsJeu.idSupport
       WHERE supportsJeu.idJeu = $idJeu");
+}
+
+//fonction qui me donne le nom du jeu
+function getNomJeu($mysqli, $idJeu){
+  return readDB($mysqli, "SELECT jeu.nom
+      FROM jeu
+      WHERE jeu.idJeu = $idJeu");
 }
 
 function modAvisPossible($mysqli, $login, $idAvis){
