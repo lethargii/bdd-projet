@@ -36,13 +36,13 @@ include("../static/head.php");
           <input type="date" id="dateSortie" name="dateSortie" placeholder="Date de sortie" required>
           <input type="text" id="synopsis" name="synopsis" placeholder="Synopsis" required>
           <input type="file" id="imageJeu" name="imageJeu" accept="image/png, image/jpeg" />
-          <input type="submit" value="Créer le jeu" id="creajeu"/>
           <?php
             $categories = listCategorie($mysqli);
             $supports = listSupport($mysqli);
             listCategorieOption($categories);
             listSupportOption($supports);
           ?>
+          <input type="submit" value="Créer le jeu" id="creajeu"/>
         </fieldset>
       </form>
       <a href="../connection/">Se connecter</a>

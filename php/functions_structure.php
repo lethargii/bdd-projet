@@ -31,21 +31,25 @@ function listJeuOption($jeux){
 }
 
 function listCategorieOption($categories){
+  echo "<div>";
   foreach($categories as $categorie){
     $idCategorie = $categorie['idCategorie'];
     $nomCategorie = $categorie['nomCategorie'];
-    echo "<input type='checkbox' name='categorie' value='$idCategorie' id='$idCategorie'>";
+    echo "<input type='checkbox' name='categorie[]' value='$idCategorie' id='$idCategorie'>";
     echo "<label for='$idCategorie'>$nomCategorie</label>";
   }
+  echo "</div>";
 }
 
 function listSupportOption($supports){
+  echo "<div>";
   foreach($supports as $support){
     $idSupport = $support['idSupport'];
     $nomSupport = $support['nomSupport'];
-    echo "<input type='checkbox' name='support' value='$idSupport' id='$idSupport'>";
+    echo "<input type='checkbox' name='support[]' value='$idSupport' id='$idSupport'>";
     echo "<label for='$idSupport'>$nomSupport</label>";
   }
+  echo "</div>";
 }
 
 function modprofil($utilisateur){
