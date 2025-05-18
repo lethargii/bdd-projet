@@ -27,7 +27,7 @@ include("static/head.php");
             echo "<h2>Vous êtes connectés " . htmlspecialchars($_SESSION['login'])."</h2>";
             echo "<h3>Votre id est : " . htmlspecialchars($_SESSION['id'])."</h3>";
         }
-        echo "<h1>Ceci est un article</h1>";
+        echo "<h1>Ceci est l'article du jeu $numero </h1>";
       ?>
     </main>
     <?php
