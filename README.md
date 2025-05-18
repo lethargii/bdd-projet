@@ -2,10 +2,12 @@
 
 Liste des choses à faire :
 
+- réparer la base de données ?
 - Faire un site qui marche
 - Ajouter des styles basiques
 - Ajouter polices
 - Voir comment créer un article pour un jeu qui n'existe pas
+- connecter a l'inscription (pas important)
 
 ## Descriptif des pages à faire
 
