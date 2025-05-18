@@ -31,11 +31,13 @@ writeDB($mysqli, 'INSERT INTO article (idJeu, titre, contenu, noteArticle, carac
 $idArticle = readDB($mysqli, "SELECT idArticle FROM article WHERE idJeu = '$idJeu'")[0]['idArticle'];
 print_r($_FILES['imagesArticle']);
 $nbImage = 1;
-foreach($_FILES['imagesArticle']['tmp_name'] as $file){
-  $lienImage = "images/article/" . $idJeu . "-" . $nbImage . ".png";
-  move_uploaded_file($file, "../" . $lienImage);
-  writeDB($mysqli, "INSERT INTO image (lienImage, idArticle) VALUES ('$lienImage', '$idArticle')");
-  $nbImage = $nbImage + 1;
+if($_FILES['imagesArticle']['error'][0] == UPLOAD_ERR_OK){
+  foreach($_FILES['imagesArticle']['tmp_name'] as $file){
+    $lienImage = "images/article/" . $idJeu . "-" . $nbImage . ".png";
+    move_uploaded_file($file, "../" . $lienImage);
+    writeDB($mysqli, "INSERT INTO image (lienImage, idArticle) VALUES ('$lienImage', '$idArticle')");
+    $nbImage = $nbImage + 1;
+  }
 }
 closeDB($mysqli);
 header('Location: ../');
