@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $RACINE; ?>/styles/decoupe.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $RACINE; ?>/styles/blocs.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $RACINE; ?>/styles/formulaire.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $RACINE; ?>/styles/modal.css">
 
     <!--import de police-->
     <link rel="preconnect" href="https://fonts.googleapis.com">

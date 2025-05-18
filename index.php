@@ -33,9 +33,9 @@ if(isset($_GET['page'])){
   $page = $_GET['page'];
 }
 else{
-  $page = "";
+  $page = 1;
 }
-$bdd=getBDD($mysqli, $idCategorie, $idSupport, $search, $page);
+$bdd=getBDD($mysqli, $idCategorie, $idSupport, $search);
 ?>
 <!DOCTYPE html>
 <?php
@@ -47,10 +47,21 @@ include("static/nav.php");
   <body>
     <main class="lilMargin">
     <?php
-    displayJV($bdd, $mysqli);
-    $nbPage = count($bdd);
+    displayJV($bdd, $mysqli, $page);
         // On peut ajouter ici si l'utilisateur possède le jeu ou pas
-      ?>
+    ?>
+    <form method="GET" action="/jvcom/">
+      <select name="page" id="name">
+        <?php
+          $nbPage = ceil(count($bdd)/5);
+          listPages($nbPage); 
+        ?>
+      </select>
+      <input type="hidden" name="search" value=<?php echo $search; ?>>
+      <input type="hidden" name="idCategorie" value=<?php echo $idCategorie; ?>>
+      <input type="hidden" name="idSupport" value=<?php echo $idSupport; ?>>
+      <input type="submit" value="Go" id="GoTo"/>
+    </form>
     </main>
     <?php
       include("static/footer.php");

@@ -1,18 +1,18 @@
 <?php
 require_once(__DIR__ . "/functions_query.php");
-function displayJV($bdd, $mysqli){
+function displayJV($bdd, $mysqli, $nbPage){
   echo "<div class='Menu'>";
-  foreach($bdd as $pd){
+  for($i=($nbPage-1)*5; $i < min($nbPage*5, count($bdd)); $i++){
     // On peut ajouter ici si l'utilisateur possède le jeu ou pas
-    echo "<a href='article.php?numero=$pd[idJeu]' class='myLilPokeBloc'>";//ajouter une classe bloc
-    echo "<img src=$pd[lienImage] class='pokeLilImg'><br>";//a changer pour une image de jeu
-    echo "$pd[nom]<br>";
-    echo "sortie le $pd[dateSortie]<br>";
-    $tabCategories = getBDDcategorie($mysqli, $pd['idJeu']);
+    echo "<a href='article.php?numero=" . $bdd[$i]['idJeu'] . "' class='myLilPokeBloc'>";//ajouter une classe bloc
+    echo "<img src=" . $bdd[$i]['lienImage'] . " class='pokeLilImg'><br>";//a changer pour une image de jeu
+    echo $bdd[$i]['nom'] . "<br>";
+    echo "sortie le " . $bdd[$i]['dateSortie'] . "<br>";
+    $tabCategories = getBDDcategorie($mysqli, $bdd[$i]['idJeu']);
     foreach($tabCategories as $tabCategorie){
       echo "<p>$tabCategorie[nomCategorie]</p>";// On peut ici changel la police en fonction du de la cotégorie ou mettre une image
     }
-    $tabSupports = getBDDsupport($mysqli, $pd['idJeu']);
+    $tabSupports = getBDDsupport($mysqli, $bdd[$i]['idJeu']);
     foreach($tabSupports as $tabSupport){
       echo "<p>$tabSupport[nomSupport]</p>";// On peut ici faire comme pour les catégories
     }
@@ -35,6 +35,12 @@ function listJeuOption($jeux){
     $idJeu = $jeu['idJeu'];
     $nom = $jeu['nom'];
     echo "<option value='$idJeu'>$idJeu - $nom</option>";
+  }
+}
+
+function listPages($nbPage){
+  for ($i=1; $i <= $nbPage; $i++) { 
+    echo "<option value=$i>$i</option>";
   }
 }
 
