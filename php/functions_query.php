@@ -92,8 +92,13 @@ function getBDD($mysqli, $idCategorie, $idSupport, $search){
     $querySearch[] = "idSupport = $idSupport";
   }
   if(!empty($querySearch)){
-    foreach($querySearch as $querySearchh){
-
+    foreach($querySearch as $i => $querySearchh){
+      if($i == 0){
+        $query .= "WHERE " . $querySearchh;
+      }
+      else{
+        $query .= " AND " . $querySearchh;
+      }
     }
   }
   return(readDB($mysqli, $query));
