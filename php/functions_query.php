@@ -81,7 +81,6 @@ function getBDD($mysqli, $idCategorie, $idSupport, $search){
   ORDER BY jeu.dateSortie";
   $querySearch = array();
   /* WHERE jeu.nom LIKE '%$search%'"; */
-  $searching = false;
   if($search != ""){
     $querySearch[] = "jeu.nom LIKE '%$search%'";
   }
