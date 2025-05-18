@@ -11,7 +11,6 @@ require_once("./php/functions-DB.php");
 require_once("./php/functions_query.php");
 require_once("./php/functions_structure.php");
 $mysqli = connectionDB();
-$bdd=getBDD($mysqli);
 $numero = $_GET['numero'];
 $tabArticle=infoArticle($mysqli, $numero);
 $tabNomJeu = getNomJeu($mysqli, $numero);
