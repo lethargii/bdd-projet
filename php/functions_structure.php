@@ -1,10 +1,10 @@
 <?php
 require_once(__DIR__ . "/functions_query.php");
 function displayJV($bdd, $mysqli){
-  echo "<div class='Menu'>";//ajouter une classe Menu
+  echo "<div class='Menu'>";
   foreach($bdd as $pd){
     // On peut ajouter ici si l'utilisateur possède le jeu ou pas
-    echo "<a href='article.php?numero=$pd[idJeu]'>";//ajouter une classe bloc
+    echo "<a href='article.php?numero=$pd[idJeu]' class='myLilPokeBloc'>";//ajouter une classe bloc
     echo "<img src=$pd[lienImage] class='pokeLilImg'><br>";//a changer pour une image de jeu
     echo "$pd[nom]<br>";
     echo "sortie le $pd[dateSortie]<br>";
